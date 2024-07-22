@@ -272,7 +272,7 @@
 
                                 <div class="job-items">
 
-                                        <a href="job_details.html" style="padding-right: 20px "><img height="100px" width="100px" style="border-color: #4C5B5C;border-style: solid;" src="<%=cimgs%>" alt=""></a>
+                                        <a href=".?pname=jobDetails" style="padding-right: 20px "><img height="100px" width="100px" style="border-color: #4C5B5C;border-style: solid;" src="<%=cimgs%>" alt=""></a>
 
                                     <div class="job-tittle">
                                         <a href=".?pname=jobDetails">

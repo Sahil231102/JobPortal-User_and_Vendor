@@ -63,7 +63,7 @@
                     <div class="single-job-items mb-50">
                         <div class="job-items">
                             <div class="company-img company-img-details">
-                                <a href="#"><img src="../User_Side/userstyle/assets/img/icon/job-list1.png" alt=""></a>
+                                <a href="#"><img src="./userstyle/assets/img/icon/job-list1.png" alt=""></a>
                             </div>
                             <div class="job-tittle">
                                 <a href="#">
