@@ -263,6 +263,7 @@
                                     byte[] cimg = rs.getBytes("companyImg");
                                     String imgByte = Base64.getEncoder().encodeToString(cimg);
                                     String cimgs = "data:image/png;base64," + imgByte;
+                                    String vacancy = rs.getString("vacancy");
                             %>
                             <!-- single-job-content -->
                             <div class="single-job-items mb-30">
@@ -271,18 +272,22 @@
                                         <a href="job_details.html" style="padding-right: 20px "><img height="100px" width="100px" style="border-color: #4C5B5C;border-style: solid;" src="<%=cimgs%>" alt=""></a>
 
                                     <div class="job-tittle">
-                                        <a href="job_details.html">
+                                        <a href=".?pname=jobDetails">
                                             <h4><%= CompanyName%></h4>
                                         </a>
                                         <ul>
                                             <li><span><%=jobName%></span></li>
 
-                                            <li>₹<%=Salary %></li>
+                                            <li>₹<%=Salary%></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="items-link f-right">
-                                    <a href="job_details.jsp"><%=JobType%></a>
+                                <div class="items-link">
+
+                                </div>
+                                <div class="items-link f-left">
+                                    <a style="width: 150px;justify-items: center;justify-content: end" href=".?pname=jobDetails"><%=JobType%></a>
+
                                     <i class="fas fa-map-marker-alt"></i> <%=city%>,<%=state%>
                                 </div>
                             </div>

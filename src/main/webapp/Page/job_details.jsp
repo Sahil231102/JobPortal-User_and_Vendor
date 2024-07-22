@@ -19,18 +19,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="../userstyle/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../userstyle/assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../userstyle/assets/css/flaticon.css">
-    <link rel="stylesheet" href="../userstyle/assets/css/slicknav.css">
-    <link rel="stylesheet" href="../userstyle/assets/css/price_rangs.css">
-    <link rel="stylesheet" href="../userstyle/assets/css/animate.min.css">
-    <link rel="stylesheet" href="../userstyle/assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="../userstyle/assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="../userstyle/assets/css/themify-icons.css">
-    <link rel="stylesheet" href="../userstyle/assets/css/slick.css">
-    <link rel="stylesheet" href="../userstyle/assets/css/nice-select.css">
-    <link rel="stylesheet" href="../userstyle/Doc/css/style.css">
+
 </head>
 
 <body>
@@ -51,7 +40,7 @@
 
     <!-- Hero Area Start-->
     <div class="slider-area ">
-        <div class="single-slider section-pad-t30 slider-height2 d-flex align-items-md-center" style="background-image: url('../User_Side/userstyle/assets/img/jobDetails/ui-uximg.jpg'); height: 100%; width: 100%">
+        <div class="single-slider section-pad-t30 slider-height2 d-flex align-items-md-center" style="background-image: url('./userstyle/assets/img/jobDetails/ui-uximg.jpg'); height: 100%; width: 100%">
         <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
