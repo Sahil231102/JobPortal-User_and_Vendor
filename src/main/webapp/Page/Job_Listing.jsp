@@ -249,7 +249,7 @@
 
                                 ResultSet rs = stmt.executeQuery("SELECT * FROM add_job");
                                 while (rs.next()) {
-                                    count++;
+
 
                                     String jobid = rs.getString(1);
                                     String jobName = rs.getString("Job_Name");
@@ -266,7 +266,7 @@
                                     byte[] cimg = rs.getBytes("companyImg");
                                     String imgByte = Base64.getEncoder().encodeToString(cimg);
                                     String cimgs = "data:image/png;base64," + imgByte;
-                                    String vacancy = rs.getString("vacancy");
+                                   String vacancy = rs.getString("vacancy");
                             %>
                             <div class="single-job-items mb-30">
 
@@ -287,15 +287,37 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="items-link">
+<%--                                <div class="items-link">--%>
 
-                                </div>
+<%--                                </div>--%>
                                 <div class="items-link f-left">
-                                    <a style="width: 150px;justify-items: center;justify-content: end" href=".?pname=jobDetails"><%=JobType%></a>
+                                    <a style="width: 150px;justify-items: center;justify-content: end" href=""><%=JobType%></a>
 
                                     <i class="fas fa-map-marker-alt"></i> <%=city%>,<%=state%>
                                 </div>
                             </div>
+
+<%--                            <div class="single-job-items mb-30">--%>
+<%--                                <div class="job-items">--%>
+<%--                                    <div class="company-img">--%>
+<%--                                        <a href="#"><img src="assets/img/icon/job-list3.png" alt=""></a>--%>
+<%--                                    </div>--%>
+<%--                                    <div class="job-tittle job-tittle2">--%>
+<%--                                        <a href="#">--%>
+<%--                                            <h4>Digital Marketer</h4>--%>
+<%--                                        </a>--%>
+<%--                                        <ul>--%>
+<%--                                            <li>Creative Agency</li>--%>
+<%--                                            <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>--%>
+<%--                                            <li>$3500 - $4000</li>--%>
+<%--                                        </ul>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                                <div class="items-link items-link2 f-right">--%>
+<%--                                    <a href="job_details.html">Full Time</a>--%>
+<%--                                    <span>7 hours ago</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
                             <%
                                 }
                                 rs.close();

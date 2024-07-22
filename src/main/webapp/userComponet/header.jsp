@@ -30,7 +30,7 @@
                             <nav class="d-none d-lg-table">
                                 <ul id="navigation">
                                     <li><a  style="" href=".?pname=Home">Home</a></li>
-                                    <li><a   href=".?pname=findJob">Find a Jobs </a></li>
+                                    <li><a   href=".?pname=findJobs">Find a Jobs </a></li>
                                     <li><a href=".?pname=About">About</a></li>
 
                                     <li><a href=".?pname=Contact">Contact</a></li>

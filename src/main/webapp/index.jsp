@@ -45,7 +45,7 @@
     <jsp:include page="/Page/Home.jsp"/>
     <%
         break;
-        case "findJob":
+        case "findJobs":
 
     %>
     <jsp:include page="Page/Job_Listing.jsp"/>
