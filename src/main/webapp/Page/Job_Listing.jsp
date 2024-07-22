@@ -216,6 +216,7 @@
                     <!-- Job Category Listing End -->
                 </div>
 <%! int count =0;%>
+
                 <!-- Right content -->
                 <div class="col-xl-9 col-lg-9 col-md-8">
                     <!-- Featured_job_start -->
@@ -238,6 +239,8 @@
                             </div>
                             <!-- Count of Job list End -->
 
+
+                            <!-- single-job-content -->
                             <%
                                 // Fetch data from the database and display it
                                 MyDatabase db = new MyDatabase();
@@ -265,8 +268,8 @@
                                     String cimgs = "data:image/png;base64," + imgByte;
                                     String vacancy = rs.getString("vacancy");
                             %>
-                            <!-- single-job-content -->
                             <div class="single-job-items mb-30">
+
                                 <div class="job-items">
 
                                         <a href="job_details.html" style="padding-right: 20px "><img height="100px" width="100px" style="border-color: #4C5B5C;border-style: solid;" src="<%=cimgs%>" alt=""></a>
@@ -278,7 +281,9 @@
                                         <ul>
                                             <li><span><%=jobName%></span></li>
 
+
                                             <li>₹<%=Salary%></li>
+
                                         </ul>
                                     </div>
                                 </div>
