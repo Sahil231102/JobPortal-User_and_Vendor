@@ -121,7 +121,7 @@
                     <div class="card-header">Profile Details</div>
                     <div class="card-body">
 
-                        <form>
+
                             <!-- Form Group (username)-->
 
                             <!-- Form Row-->
@@ -162,7 +162,10 @@
                                 <!-- Form Group (location)-->
                                                            </div>
                             <!-- Save changes button-->
-                            <button style="font-family: 'Josefin Sans', sans-serif" class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal"> Update</button>
+
+
+                        <button style="font-family: 'Josefin Sans', sans-serif" class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal"> Update</button>
+                        <form enctype="multipart/form-data" method="post" action="./UpdateUserProfileServlet">
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -174,47 +177,42 @@
                                         </div>
                                         <div class="modal-body">
                                             <label>User Id</label>
-                                            <input type="text" class="form-control" name="Fname" value="<%=id%>"readonly/>
-
+                                            <input type="text" class="form-control" name="id" value="<%=id%>" readonly />
                                         </div>
                                         <div class="modal-body">
                                             <label>First name</label>
-                                            <input type="text" class="form-control" name="Fname" value="<%=Fname%>"/>
-
+                                            <input type="text" class="form-control" name="fname" value="<%=Fname%>" />
                                         </div>
                                         <div class="modal-body">
                                             <label>Last name</label>
-                                            <input type="text" class="form-control" name="Lname" value="<%=Lname%>"/>
-
+                                            <input type="text" class="form-control" name="lname" value="<%=Lname%>" />
                                         </div>
                                         <div class="modal-body">
                                             <label>Email Address</label>
-                                            <input type="text" class="form-control" name="Email" value="<%=Email%>"/>
-
+                                            <input type="text" class="form-control" name="email" value="<%=Email%>" />
                                         </div>
                                         <div class="modal-body">
                                             <label>Phone Number</label>
-                                            <input type="tel"maxlength="10"  class="form-control" name="Phone" value="<%=Phone%>"/>
-
+                                            <input type="tel" maxlength="10" class="form-control" name="phone" value="<%=Phone%>" />
                                         </div>
                                         <div class="modal-body">
                                             <label>Gender</label>
-                                            <input type="text" class="form-control" name="Gender" value="<%=Gender%>"/>
-
+                                            <input type="text" class="form-control" name="Gender" value="<%=Gender%>" />
                                         </div>
                                         <div class="modal-body">
                                             <label>Choose Images</label>
-                                            <input type="file" class="form-control" name="UnewImg" value="<%=cimg%>"/>
-
+                                            <input type="file" class="form-control" name="updateimg" value="<%=cimg%>" />
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <!-- Change this button type to submit -->
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </form>
+
                         <%
                             }
                             }

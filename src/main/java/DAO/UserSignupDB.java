@@ -22,6 +22,7 @@ public class UserSignupDB {
             preparedStatement.setString(7, userSignupModel.getGender());
             preparedStatement.setBytes(8, userSignupModel.getDp());
 
+
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
                 status = true;
