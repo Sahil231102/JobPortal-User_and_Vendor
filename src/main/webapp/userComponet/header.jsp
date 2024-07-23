@@ -1,4 +1,9 @@
-<%--
+<%@ page import="java.sql.Connection" %>
+<%@ page import="DAO.MyDatabase" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.util.Base64" %><%--
   Created by IntelliJ IDEA.
   User: DELL
   Date: 04-06-2024
@@ -34,17 +39,40 @@
                                     <li><a href=".?pname=About">About</a></li>
 
                                     <li><a href=".?pname=Contact">Contact</a></li>
-                                    <li><a href=".?pname=userProfile">Profile</a></li>
+<%--                                    <li><a href=".?pname=userProfile">Profile</a></li>--%>
 
 
                                 </ul>
 
                             </nav>
                         </div>
-                         <img style="height:  50px;border-radius: 50px;align-items: end;border-style:solid;border-color: #4C5B5C" width=50px" src="./userstyle/assets/img/homrpageimg.png" >
+                        <%
+
+                            try {
+                                Connection con = MyDatabase.getConnection();
+                                Statement st = con.createStatement();
+                                ResultSet rs = st.executeQuery(" SELECT Uimg FROM user WHERE id = 3");
+                                while (rs.next())
+                                {
+                                    byte[] uimg = rs.getBytes("Uimg");
+                                    String imgbyte = Base64.getEncoder().encodeToString(uimg);
+                                    String userimges = "data:image/png;base64,"+imgbyte;
+
+
+                        %>
+                        <a href=".?pname=userProfile"><img style="height:  50px;border-radius: 50px;align-items: end;border-style:solid;border-color: #4C5B5C" width=50px" href=".?pname=userProfile" src="<%=userimges%>" /></a>
                         <!-- Header-btn -->
 
                     </div>
+                    <%
+                            }
+
+                        }
+                            catch (Exception e)
+                            {
+                                e.printStackTrace();
+                            }
+                    %>
                 </div>
                 <div class="col-lg-12 col-md-13">
 

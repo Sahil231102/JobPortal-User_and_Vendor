@@ -18,8 +18,8 @@
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
-    <link rel="stylesheet" href="../userstyle/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../userstyle/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./userstyle/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./userstyle/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="../userstyle/assets/css/flaticon.css">
     <link rel="stylesheet" href="../userstyle/assets/css/slicknav.css">
     <link rel="stylesheet" href="../userstyle/assets/css/price_rangs.css">

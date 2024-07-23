@@ -30,6 +30,13 @@ try {
     String email = req.getParameter("email");
     String phone = req.getParameter("phone");
     String gender = req.getParameter("Gender");
+//    System.out.println(id);
+//    System.out.println(fname);
+//    System.out.println(lname);
+//    System.out.println(email);
+//    System.out.println(phone);
+//    System.out.println(gender);
+
 
     Part updateimg = req.getPart("updateimg");
     InputStream inputStream = updateimg.getInputStream();
@@ -38,10 +45,11 @@ try {
     UpdateUserProfileModel UUPM = new UpdateUserProfileModel(id,fname,lname,email,phone,gender,UpdateImg);
     UpdateUserProfileDB uupDB = new UpdateUserProfileDB();
     boolean updateData = uupDB.UpdateUserProfileDB(UUPM);
-
+//System.out.println(updateData);
     if(updateData)
     {
-        resp.sendRedirect(".?pnmae=userProfile");
+        System.out.println();
+        resp.sendRedirect(".?pname=userProfile");
     }
     else
     {

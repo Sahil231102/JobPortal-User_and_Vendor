@@ -1,4 +1,8 @@
-<%--
+<%@ page import="java.sql.Connection" %>
+<%@ page import="DAO.MyDatabase" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.util.Base64" %><%--
   Created by IntelliJ IDEA.
   User: DELL
   Date: 20-05-2024
@@ -214,102 +218,93 @@
 <%--    </div>--%>
 <%--    <!-- Online CV Area End-->--%>
     <!-- Featured_job_start -->
+
     <section class="featured-job-area feature-padding">
-        <div class="container">
-            <!-- Section Tittle -->
-            <div class="row h3">
-                <div class="col-lg-12">
-                    <div class="section-tittle text-center">
-                        <span>Recent Job</span>
-                        <h2>Featured Jobs</h2>
-                    </div>
+        <div class="row h3">
+            <div class="col-lg-12">
+                <div class="section-tittle text-center">
+                    <span>Recent Job</span>
+                    <h2>Featured Jobs</h2>
                 </div>
             </div>
+        </div>
+        <%
+            int id = 3;
+            try
+            {
+                Connection con = MyDatabase.getConnection();
+                PreparedStatement  psmt = con.prepareStatement("select * from add_job order by Company_name DESC");
+                psmt.execute();
+                ResultSet rs = psmt.getResultSet();
+                for(int i=1; i<=5;i++)
+                {
+
+                    if (rs.next()) {
+
+                        String Jobname= rs.getString("Job_Name");
+
+                        String Company_name= rs.getString("Company_Name");
+                        String city = rs.getString("City");
+                        String state= rs.getString("State");
+                        String email = rs.getString("Email");
+                        String phone = rs.getString("Phone_Number");
+                        String salary = rs.getString("Salary");
+                        String jobtype = rs.getString("JobType");
+                        String startdate = rs.getString("StartDate");
+                        String enddate = rs.getString("EndDate");
+                        String jobDescription = rs.getString("JobDescription");
+                        String vacancy = rs.getString("vacancy");
+
+                        byte[] Cimg = rs.getBytes("companyImg");
+                        String imgbyte = Base64.getEncoder().encodeToString(Cimg);
+                        String companyImg = "data:image/png;base64,"+imgbyte;
+
+
+
+
+        %>
+
+        <div class="container">
+            <!-- Section Tittle -->
+
+
             <div class="row justify-content-center">
                 <div class="col-xl-10">
                     <!-- single-job-content -->
                     <div class="single-job-items mb-30">
                         <div class="job-items">
                             <div class="company-img">
-                                <a href="job_details.html"><img src="./userstyle/assets/img/icon/job-list1.png" alt=""></a>
+                                <a href=".?pname=jobDetails" style="padding-right: 20px "><img height="100px" width="100px" style="border-color: #4C5B5C;border-style: solid;" src="<%=companyImg%>" alt=""></a>
                             </div>
                             <div class="job-tittle">
-                                <a href="job_details.html"><h4>Digital Marketer</h4></a>
+                                <a href="job_details.html"><h4><%=Company_name%></h4></a>
                                 <ul>
-                                    <li>Creative Agency</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                    <li>$3500 - $4000</li>
+                                    <li><%=Jobname%></li>
+                                    <li><i class="fas fa-map-marker-alt"></i><%=city%>,<%=state%></li>
+
                                 </ul>
                             </div>
                         </div>
                         <div class="items-link f-right">
                             <a href="job_details.html">Full Time</a>
-                            <span>7 hours ago</span>
+                            <li><%=salary%>₹</li>
                         </div>
                     </div>
                     <!-- single-job-content -->
-                    <div class="single-job-items mb-30">
-                        <div class="job-items">
-                            <div class="company-img">
-                                <a href="job_details.html"><img src="./userstyle/assets/img/icon/job-list2.png" alt=""></a>
-                            </div>
-                            <div class="job-tittle">
-                                <a href="job_details.html"><h4>Digital Marketer</h4></a>
-                                <ul>
-                                    <li>Creative Agency</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                    <li>$3500 - $4000</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="items-link f-right">
-                            <a href="job_details.html">Full Time</a>
-                            <span>7 hours ago</span>
-                        </div>
-                    </div>
-                    <!-- single-job-content -->
-                    <div class="single-job-items mb-30">
-                        <div class="job-items">
-                            <div class="company-img">
-                                <a href="job_details.html"><img src="./userstyle/assets/img/icon/job-list3.png" alt=""></a>
-                            </div>
-                            <div class="job-tittle">
-                                <a href="job_details.html"><h4>Digital Marketer</h4></a>
-                                <ul>
-                                    <li>Creative Agency</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                    <li>$3500 - $4000</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="items-link f-right">
-                            <a href="job_details.html">Full Time</a>
-                            <span>7 hours ago</span>
-                        </div>
-                    </div>
-                    <!-- single-job-content -->
-                    <div class="single-job-items mb-30">
-                        <div class="job-items">
-                            <div class="company-img">
-                                <a href="job_details.html"><img src="./userstyle/assets/img/icon/job-list4.png" alt=""></a>
-                            </div>
-                            <div class="job-tittle">
-                                <a href="job_details.html"><h4>Digital Marketer</h4></a>
-                                <ul>
-                                    <li>Creative Agency</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                    <li>$3500 - $4000</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="items-link f-right">
-                            <a href="job_details.html">Full Time</a>
-                            <span>7 hours ago</span>
-                        </div>
-                    </div>
+                                     <!-- single-job-content -->
+
                 </div>
             </div>
         </div>
+        <%
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        %>
     </section>
     <!-- Featured_job_end -->
     <!-- How  Apply Process Start-->

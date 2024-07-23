@@ -10,13 +10,14 @@ public class UpdateUserProfileModel {
     private String Gender;
     private byte[] newimg;
 
-    public UpdateUserProfileModel(String firstName, String lastName, String email, String phone, String Gender, String gender, byte[] newimg) {
+    public UpdateUserProfileModel(String id,String firstName, String lastName, String email, String phone, String gender, byte[] newimg) {
 
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
-        this.Gender = Gender;
+        this.Gender = gender;
         this.newimg = newimg;
 
     }
