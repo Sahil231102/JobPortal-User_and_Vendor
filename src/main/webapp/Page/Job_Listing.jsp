@@ -12,7 +12,80 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html class="no-js" lang="zxx">
+<style>
+    .toggle-content {
+        display: none; /* Initially hidden */
+        /* Add any additional styling for the content */
+        background-color: #f1f1f1;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    .show {
+        display: block; /* Display content when show class is added */
+    }
+
+    .icon {
+        cursor: pointer; /* Change cursor to pointer for clickable effect */
+        display: inline-block;
+        padding: 10px;
+    }
+    .card{border-color: #0b1c39;
+        background: #ffffff;
+        border-radius: 15px;
+        max-width: 300px;
+        width: 100%;
+        height: 480px;
+
+        margin: 0 auto;
+    }
+    .card__header{
+        padding: 24px;
+        display: flex;
+        align-items: center;
+    }
+    .card__header .avatar{
+        width: 60px;
+        flex-shrink: 0;
+        margin-right: 12px;
+    }
+    .card__header .avatar img{
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        object-fit: cover;
+    }
+    .card__header .name{
+        width: 100%;
+        font-size: 15px;
+        color: #78858F;
+        font-weight: 500;
+    }
+    .card__header .name span{
+        display: block;
+        color: #000000;
+        font-size: 20px;
+    }
+    /*.icon{*/
+    /*    font-size: 24px;*/
+    /*    line-height: 1;*/
+    /*    color: #000000;*/
+    /*    flex-shrink: 0;*/
+    /*    margin-left: 12px;*/
+    /*}*/
+    .card__body img{
+        width: 100%;
+    }
+    .card__footer{
+        padding: 24px;
+        font-size: 18px;
+        color: #78858F;
+    }
+</style>
 <head>
+    <!-- Add this line in the <head> section of your HTML -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Job board HTML-5 Template</title>
@@ -220,6 +293,8 @@
                 <!-- Right content -->
                 <div class="col-xl-9 col-lg-9 col-md-8">
                     <!-- Featured_job_start -->
+
+
                     <section class="featured-job-area">
                         <div class="container">
                             <!-- Count of Job list Start -->
@@ -239,7 +314,6 @@
                             </div>
                             <!-- Count of Job list End -->
 
-
                             <!-- single-job-content -->
                             <%
                                 // Fetch data from the database and display it
@@ -248,9 +322,8 @@
                                 Statement stmt = con.createStatement();
 
                                 ResultSet rs = stmt.executeQuery("SELECT * FROM add_job");
+                                int count = 0;
                                 while (rs.next()) {
-
-
                                     String jobid = rs.getString(1);
                                     String jobName = rs.getString("Job_Name");
                                     String CompanyName = rs.getString("Company_Name");
@@ -266,66 +339,49 @@
                                     byte[] cimg = rs.getBytes("companyImg");
                                     String imgByte = Base64.getEncoder().encodeToString(cimg);
                                     String cimgs = "data:image/png;base64," + imgByte;
-                                   String vacancy = rs.getString("vacancy");
+                                    String vacancy = rs.getString("vacancy");
+
+                                    if (count % 2 == 0) { // Start a new row every 2 columns
                             %>
-                            <div class="single-job-items mb-30">
+                            <div class="row">
+                                <% } %>
+                                <div class="col-md-6 mb-30">
+                                    <div class="card">
+                                        <div class="card__header">
+                                            <div class="avatar">
+                                                <img src="<%=cimgs%>" width="60" height="60" style="border-color: #4C5B5C;border-style: solid" alt="">
+                                            </div>
+                                            <div class="name" style="font-family:'Josefin Sans', sans-serif;">
+                                                <span style="font-size: 16px" ><%=CompanyName%></span>
+                                                <span style="font-size: 12px" > <%=city%>,<%=state%></span>
+                                            </div>
+                                            <div class="icon col-lg-1">
+                                                <i class="fa-solid fa-ellipsis-vertical" id="toggleIcon"></i>
+                                            </div>
+                                            <div class="toggle-content" id="toggleContent">
+                                                <a>Apply</a><hr>
+                                                <a>View</a>
+                                            </div>
 
-                                <div class="job-items">
 
-                                        <a href=".?pname=jobDetails" style="padding-right: 20px "><img height="100px" width="100px" style="border-color: #4C5B5C;border-style: solid;" src="<%=cimgs%>" alt=""></a>
+                                        </div>
+                                        <div class="card__body">
+                                            <img src="<%=cimgs%>" style=" height: 40vh;padding: 10px; border-color: #0c5460;border-style: solid; object-fit: cover;" alt="">
+                                        </div>
+                                        <div class="card__footer">
+                                            <p>Job Type: <%=JobType%></p>
 
-                                    <div class="job-tittle">
-                                        <a href=".?pname=jobDetails">
-                                            <h4><%= CompanyName%></h4>
-                                        </a>
-                                        <ul>
-                                            <li><span><%=jobName%></span></li>
-
-
-                                            <li>₹<%=Salary%></li>
-
-                                        </ul>
+                                        </div>
                                     </div>
                                 </div>
-<%--                                <div class="items-link">--%>
-
-<%--                                </div>--%>
-                                <div class="items-link f-left">
-                                    <a style="width: 150px;justify-items: center;justify-content: end" href=""><%=JobType%></a>
-
-                                    <i class="fas fa-map-marker-alt"></i> <%=city%>,<%=state%>
-                                </div>
+                                <% count++; if (count % 2 == 0) { // Close the row after 2 columns %>
                             </div>
-
-<%--                            <div class="single-job-items mb-30">--%>
-<%--                                <div class="job-items">--%>
-<%--                                    <div class="company-img">--%>
-<%--                                        <a href="#"><img src="assets/img/icon/job-list3.png" alt=""></a>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="job-tittle job-tittle2">--%>
-<%--                                        <a href="#">--%>
-<%--                                            <h4>Digital Marketer</h4>--%>
-<%--                                        </a>--%>
-<%--                                        <ul>--%>
-<%--                                            <li>Creative Agency</li>--%>
-<%--                                            <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>--%>
-<%--                                            <li>$3500 - $4000</li>--%>
-<%--                                        </ul>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="items-link items-link2 f-right">--%>
-<%--                                    <a href="job_details.html">Full Time</a>--%>
-<%--                                    <span>7 hours ago</span>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-                            <%
-                                }
-                                rs.close();
-                                stmt.close();
-                                con.close();
-                            %>
+                            <% } } if (count % 2 != 0) { // Close the last row if it has only 1 column %>
                         </div>
-                    </section>
+                            <% } rs.close(); stmt.close(); con.close(); %>
+                </div>
+                </section>
+
                     <!-- Featured_job_end -->
                 </div>
             </div>
@@ -334,6 +390,12 @@
     <!-- Job List Area End -->
 
 </main>
-
+<script>
+    // JavaScript to toggle the view
+    document.getElementById('toggleIcon').addEventListener('click', function() {
+        var content = document.getElementById('toggleContent');
+        content.classList.toggle('show');
+    });
+</script>
 </body>
 </html>

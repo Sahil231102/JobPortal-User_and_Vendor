@@ -164,7 +164,7 @@
                             <!-- Save changes button-->
 
 
-                        <button style="font-family: 'Josefin Sans', sans-serif" class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal"> Update</button>
+                        <button style="font-family: 'Josefin Sans'  , sans-serif" class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal"> Update</button>
                         <form enctype="multipart/form-data" method="post" action="./UpdateUserProfileServlet">
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
