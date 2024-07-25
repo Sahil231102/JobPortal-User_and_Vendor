@@ -81,6 +81,21 @@
         font-size: 18px;
         color: #78858F;
     }
+    .btn::before{
+        background: none !important;
+    }
+    .dropdown-toggle::after {
+        display: none !important; /* Hide the default dropdown arrow */
+    }
+
+
+    .dropdown-toggle:focus,
+    .dropdown-toggle:active {
+        outline: none !important; /* Removes the focus outline */
+        box-shadow: none !important; /* Removes the shadow that appears on active state */
+        border: none !important; /* Removes the border */
+    }
+
 </style>
 <head>
     <!-- Add this line in the <head> section of your HTML -->
@@ -91,6 +106,8 @@
     <title>Job board HTML-5 Template</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -355,12 +372,22 @@
                                                 <span style="font-size: 16px" ><%=CompanyName%></span>
                                                 <span style="font-size: 12px" > <%=city%>,<%=state%></span>
                                             </div>
-                                            <div class="icon col-lg-1">
-                                                <i class="fa-solid fa-ellipsis-vertical" id="toggleIcon"></i>
-                                            </div>
-                                            <div class="toggle-content" id="toggleContent">
-                                                <a>Apply</a><hr>
-                                                <a>View</a>
+<%--                                            <div class="icon col-lg-1">--%>
+<%--                                                <i class="fa-solid fa-ellipsis-vertical" id="toggleIcon"></i>--%>
+<%--                                            </div>--%>
+<%--                                            <div class="toggle-content" id="toggleContent">--%>
+<%--                                                <a>Apply</a><hr>--%>
+<%--                                                <a>View</a>--%>
+<%--                                            </div>--%>
+
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary dropdown-toggle" style="color: black !important;background-color: white !important; border: none !important;" type="button" id="dropdownMenuButton10" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fa-solid fa-ellipsis-vertical" id="toggleIcon"></i>
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
+                                                    <li><a class="dropdown-item" href="#">Apply</a></li>
+                                                    <li><a class="dropdown-item" href="#">View</a></li>
+                                                </ul>
                                             </div>
 
 
