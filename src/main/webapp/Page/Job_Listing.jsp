@@ -40,12 +40,14 @@
         margin: 0 auto;
     }
     .card__header{
+        height: 100PX;
         padding: 24px;
         display: flex;
         align-items: center;
     }
     .card__header .avatar{
         width: 60px;
+
         flex-shrink: 0;
         margin-right: 12px;
     }
@@ -77,10 +79,12 @@
         width: 100%;
     }
     .card__footer{
-        padding: 24px;
+
+      margin: 10px;
         font-size: 18px;
         color: #78858F;
     }
+
     .btn::before{
         background: none !important;
     }
@@ -357,6 +361,9 @@
                                     String imgByte = Base64.getEncoder().encodeToString(cimg);
                                     String cimgs = "data:image/png;base64," + imgByte;
                                     String vacancy = rs.getString("vacancy");
+                                    byte[] pimg = rs.getBytes("Posterimg");
+                                    String imgByte2 = Base64.getEncoder().encodeToString(pimg);
+                                    String pimgs = "data:image/png;base64," + imgByte2;
 
                                     if (count % 2 == 0) { // Start a new row every 2 columns
                             %>
@@ -392,11 +399,18 @@
 
 
                                         </div>
-                                        <div class="card__body">
-                                            <img src="<%=cimgs%>" style=" height: 40vh;padding: 10px; border-color: #0c5460;border-style: solid; object-fit: cover;" alt="">
+                                        <div>
+                                            <p style="font-weight: bold;font-size: 15px;padding-left: 20px;margin: 2px">Job:<%=jobName%></p>
                                         </div>
-                                        <div class="card__footer">
-                                            <p>Job Type: <%=JobType%></p>
+
+                                        <div class="card__body">
+                                            <img src="<%=pimgs%>" style=" height: 40vh;padding: 10px; border-color: #0c5460;border-style: solid; object-fit: cover;" alt="">
+                                        </div>
+
+
+                                        <div style="text-align: center;padding: 8px">
+                                                <input style="justify-items: center" type="submit" value="view Job" class="btn btn-primary">
+
 
                                         </div>
                                     </div>
