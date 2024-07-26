@@ -393,7 +393,7 @@
                                                 </button>
                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
                                                     <li><a class="dropdown-item" href="#">Apply</a></li>
-                                                    <li><a class="dropdown-item" href="#">View</a></li>
+                                                    <li><a class="dropdown-item" href=".?pname=jobDetails">View</a></li>
                                                 </ul>
                                             </div>
 
@@ -409,7 +409,7 @@
 
 
                                         <div style="text-align: center;padding: 8px">
-                                                <input style="justify-items: center" type="submit" value="view Job" class="btn btn-primary">
+                                            <button type="button" href="href=.?pname=jobDetails"></button>
 
 
                                         </div>

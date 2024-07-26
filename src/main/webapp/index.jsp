@@ -66,6 +66,11 @@
     <jsp:include page="./Page/job_details.jsp"/>
     <%
         break;
+        case"JobApply":
+    %>
+   <jsp:include page="Page/Job_Apply.jsp"/>
+    <%
+        break;
         case "userProfile":
     %>
 
