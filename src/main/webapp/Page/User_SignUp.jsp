@@ -65,7 +65,7 @@
             <div class="btn">
                 <input style="color: whitesmoke; background: #0b0b0b; width: 50%; height: 50px; border-radius: 20px; margin: 0; font-size: 20px" type="submit" value="Register">
             </div>
-            <div class="signup-link">You Are Already Login? <a href="User_Login.jsp">Login now</a></div>
+            <div class="signup-link">You Are Already Login? <a href="../User_Login.jsp">Login now</a></div>
         </form>
     </div>
 </div>

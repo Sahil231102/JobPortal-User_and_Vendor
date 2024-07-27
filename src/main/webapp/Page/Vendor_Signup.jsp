@@ -70,7 +70,7 @@
             <div class="signup-link"style="place-items: center;">
                 <input  style="color: whitesmoke;background: #0b0b0b; width: 50% ;height: 50px; border-radius: 20px;margin: 0; padding: 0; font-size: 20px"  type="submit" value="Register">
             </div>
-            <div class="signup-link">You are already Login? <a href="User_Login.jsp">Login now</a></div>
+            <div class="signup-link">You are already Login? <a href="../User_Login.jsp">Login now</a></div>
 
         </form>
     </div>

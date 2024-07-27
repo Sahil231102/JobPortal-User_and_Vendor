@@ -32,7 +32,7 @@
     </style>
     <meta charset="utf-8">
     <title>Login & Signup Form | CodingNepal</title>
-    <link rel="stylesheet" href="../userstyle/Loginstyle.css">
+    <link rel="stylesheet" href="userstyle/Loginstyle.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -50,7 +50,7 @@
             <div class="slider-tab"></div>
         </div>
         <div class="form-inner">
-            <form action="UserLoginServlet" class="login" id="userLoginForm">
+            <form action="./UserLoginServlet" method="post" enctype="multipart/form-data" class="login" id="userLoginForm">
                 <div class="field">
                     <input type="email" placeholder="User Email Address" id="userEmail" name="email" required>
                 </div>
@@ -60,7 +60,7 @@
                 <div class="pass-link"><a href="#">Forgot password?</a></div>
                 <div class="field btn">
                     <div class="btn-layer"></div>
-                    <input type="submit" value="Login" formaction="Home.jsp">
+                    <input type="submit" value="Login">
                 </div>
                 <div class="usersignup-link">Not a member? <a href="UserSignup.jsp">Signup now</a></div>
             </form>
@@ -138,6 +138,60 @@
                 });
             }
         });
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const form = event.target;
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: form.method,
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // Show success notification
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: data.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        // Redirect after showing the success message
+                        window.location.href = './index.jsp';
+                    });
+                } else if (data.status === 'failure') {
+                    // Show failure notification
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: data.message
+                    });
+                } else {
+                    // Show error notification
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: data.message
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Show error notification
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'An unexpected error occurred.'
+                });
+            });
     });
 </script>
 </body>

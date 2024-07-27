@@ -32,12 +32,13 @@ public class UserLoginServlet extends HttpServlet {
 
             if(UserLogin)
             {
-                resp.sendRedirect("/index.jsp");
+                resp.sendRedirect("./index.jsp");
 //                RequestDispatcher rq=req.getRequestDispatcher(req.getContextPath())+".?");
 //                rq.forward(req,resp);
             }
             else
             {
+                out.println("<script>alert('incorrect phone number and password Please Enter Valid')</script>");
                 RequestDispatcher rq=req.getRequestDispatcher("/User_Login.jsp");
                 rq.include(req,resp);
             }
