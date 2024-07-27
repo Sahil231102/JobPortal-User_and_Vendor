@@ -21,23 +21,39 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="./userstyle/assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image" href="./userstyle/assets/img/logo/finalogo.jpg">
 
     <!-- CSS here -->
 </head>
 
 <body>
 <!-- Preloader Start -->
-<%--<div id="preloader-active">--%>
-<%--    <div class="preloader d-flex align-items-center justify-content-center">--%>
-<%--        <div class="preloader-inner position-relative">--%>
-<%--            <div class="preloader-circle"></div>--%>
-<%--            <div class="preloader-img pere-text">--%>
-<%--                <img src="userstyle/assets/img/logo/logo.png" alt="">--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
+<div class="pre-loader">
+    <div class="pre-loader-box">
+        <div class="loader-logo">
+            <div class="loading">
+                <img width="20%" src="./userstyle/assets/img/logo/lalo.png"/>
+<%--                <svg viewBox="0 0 187.3 93.7" height="200px" width="300px" class="loading">--%>
+<%--                    <defs>--%>
+<%--                        <linearGradient y2="0%" x2="100%" y1="0%" x1="0%" id="gradient">--%>
+<%--                            <stop stop-color="pink" offset="0%"></stop>--%>
+
+<%--                            <stop stop-color="blue" offset="80%"></stop>--%>
+<%--                        </linearGradient>--%>
+<%--                    </defs>--%>
+
+<%--                    <path stroke="url(#gradient)" d="M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z"></path>--%>
+<%--                </svg>--%>
+
+            </div>
+        </div>
+        <div class="loader-progress" id="progress_div">
+            <div class="bar" id="bar1"></div>
+        </div>
+        <div class="percent" id="percent1">0%</div>
+        <div class="loading-text">Loading...</div>
+    </div>
+</div>
 <!-- Preloader Start -->
 
 <main>
@@ -361,6 +377,31 @@
 
 
 </main>
+<script>
+    window.addEventListener('load', function () {
+        var loader = document.querySelector('.pre-loader');
+        var progress = document.querySelector('#bar1');
+        var percent = document.querySelector('#percent1');
+
+        // Function to update the loading progress
+        function updateProgress() {
+            var width = 0;
+            var interval = setInterval(function () {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    loader.style.display = 'none'; // Hide loader once complete
+                } else {
+                    width++;
+                    progress.style.width = width + '%';
+                    percent.innerHTML = width + '%';
+                }
+            }, 30); // Speed of progress
+        }
+
+        // Start updating progress
+        updateProgress();
+    });
+</script>
 
 
 <!-- JS here -->

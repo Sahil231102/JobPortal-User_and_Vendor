@@ -9,9 +9,9 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
-   <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Job board HTML-5 Template </title>
+    <title>Job Board HTML-5 Template</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,24 +19,26 @@
 
 <body>
 <!-- Preloader Start -->
-<%--<div id="preloader-active">--%>
-<%--    <div class="preloader d-flex align-items-center justify-content-center">--%>
-<%--        <div class="preloader-inner position-relative">--%>
-<%--            <div class="preloader-circle"></div>--%>
-<%--            <div class="preloader-img pere-text">--%>
-<%--                <img src="assets/img/logo/logo.png" alt="">--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
-<!-- Preloader Start -->
+<div class="pre-loader" id="preloader">
+    <div class="pre-loader-box">
+        <div class="loader-logo">
+            <div class="loading">
+                <img width="20%" src="./userstyle/assets/img/logo/lalo.png" alt="Loading"/>
+            </div>
+        </div>
+        <div class="loader-progress" id="progress_div">
+            <div class="bar" id="bar1"></div>
+        </div>
+        <div class="percent" id="percent1">0%</div>
+        <div class="loading-text">Loading...</div>
+    </div>
+</div>
+<!-- Preloader End -->
 
-    <!-- Header Start -->
-
-    <!-- Header End -->
+<!-- Header Start -->
+<!-- Header End -->
 
 <main>
-
     <!-- Hero Area Start-->
     <div class="slider-area ">
         <div class="single-slider section-pad-t30 slider-height2 d-flex align-items-md-center" style="background-image: url('./userstyle/assets/img/about/bgimg.jpg'); height: 100%; width: 100%">
@@ -52,6 +54,7 @@
         </div>
     </div>
     <!-- Hero Area End -->
+
     <!-- Support Company Start-->
     <div class="support-company-area fix section-padding2">
         <div class="container">
@@ -75,6 +78,7 @@
         </div>
     </div>
     <!-- Support Company End-->
+
     <!-- How  Apply Process Start-->
     <div class="apply-process-area apply-bg pt-150 pb-150" data-background="./assets/img/gallery/how-applybg.png">
         <div class="container">
@@ -126,143 +130,30 @@
         </div>
     </div>
     <!-- How  Apply Process End-->
-    <!-- Testimonial Start -->
-<%--    <div class="testimonial-area testimonial-padding">--%>
-<%--        <div class="container">--%>
-<%--            <!-- Testimonial contents -->--%>
-<%--            <div class="row d-flex justify-content-center">--%>
-<%--                <div class="col-xl-8 col-lg-8 col-md-10">--%>
-<%--                    <div class="h1-testimonial-active dot-style">--%>
-<%--                        <!-- Single Testimonial -->--%>
-<%--                        <div class="single-testimonial text-center">--%>
-<%--                            <!-- Testimonial Content -->--%>
-<%--                            <div class="testimonial-caption ">--%>
-<%--                                <!-- founder -->--%>
-<%--                                <div class="testimonial-founder  ">--%>
-<%--                                    <div class="founder-img mb-30">--%>
-<%--                                        <img src="./assets/img/testmonial/testimonial-founder.png" alt="">--%>
-<%--                                        <span>Margaret Lawson</span>--%>
-<%--                                        <p>Creative Director</p>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="testimonial-top-cap">--%>
-<%--                                    <p>“I am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.”</p>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <!-- Single Testimonial -->--%>
-<%--                        <div class="single-testimonial text-center">--%>
-<%--                            <!-- Testimonial Content -->--%>
-<%--                            <div class="testimonial-caption ">--%>
-<%--                                <!-- founder -->--%>
-<%--                                <div class="testimonial-founder  ">--%>
-<%--                                    <div class="founder-img mb-30">--%>
-<%--                                        <img src="assets/img/testmonial/testimonial-founder.png" alt="">--%>
-<%--                                        <span>Margaret Lawson</span>--%>
-<%--                                        <p>Creative Director</p>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="testimonial-top-cap">--%>
-<%--                                    <p>“I am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.”</p>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <!-- Single Testimonial -->--%>
-<%--                        <div class="single-testimonial text-center">--%>
-<%--                            <!-- Testimonial Content -->--%>
-<%--                            <div class="testimonial-caption ">--%>
-<%--                                <!-- founder -->--%>
-<%--                                <div class="testimonial-founder  ">--%>
-<%--                                    <div class="founder-img mb-30">--%>
-<%--                                        <img src="assets/img/testmonial/testimonial-founder.png" alt="">--%>
-<%--                                        <span>Margaret Lawson</span>--%>
-<%--                                        <p>Creative Director</p>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="testimonial-top-cap">--%>
-<%--                                    <p>“I am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.”</p>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--    <!-- Testimonial End -->--%>
-<%--    <!-- Online CV Area Start -->--%>
-<%--    <div class="online-cv cv-bg section-overly pt-90 pb-120"  data-background="./assets/img/gallery/cv_bg.jpg">--%>
-<%--        <div class="container">--%>
-<%--            <div class="row justify-content-center">--%>
-<%--                <div class="col-xl-10">--%>
-<%--                    <div class="cv-caption text-center">--%>
-<%--                        <p class="pera1">FEATURED TOURS Packages</p>--%>
-<%--                        <p class="pera2"> Make a Difference with Your Online Resume!</p>--%>
-<%--                        <a href="#" class="border-btn2 border-btn4">Upload your cv</a>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--    <!-- Online CV Area End-->--%>
-
-<%--    <!-- Blog Area Start -->--%>
-<%--    <div class="home-blog-area blog-h-padding">--%>
-<%--        <div class="container">--%>
-<%--            <!-- Section Tittle -->--%>
-<%--            <div class="row">--%>
-<%--                <div class="col-lg-12">--%>
-<%--                    <div class="section-tittle text-center">--%>
-<%--                        <span>Our latest blog</span>--%>
-<%--                        <h2>Our recent news</h2>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="row">--%>
-<%--                <div class="col-xl-6 col-lg-6 col-md-6">--%>
-<%--                    <div class="home-blog-single mb-30">--%>
-<%--                        <div class="blog-img-cap">--%>
-<%--                            <div class="blog-img">--%>
-<%--                                <img src="" alt="">--%>
-<%--                                <!-- Blog date -->--%>
-<%--                                <div class="blog-date text-center">--%>
-<%--                                    <span>24</span>--%>
-<%--                                    <p>Now</p>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="blog-cap">--%>
-<%--                                <p>|   Properties</p>--%>
-<%--                                <h3><a href="single-blog.html">Footprints in Time is perfect House in Kurashiki</a></h3>--%>
-<%--                                <a href="#" class="more-btn">Read more »</a>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="col-xl-6 col-lg-6 col-md-6">--%>
-<%--                    <div class="home-blog-single mb-30">--%>
-<%--                        <div class="blog-img-cap">--%>
-<%--                            <div class="blog-img">--%>
-<%--                                <img src="./assets/img/blog/home-blog2.jpg" alt="">--%>
-<%--                                <!-- Blog date -->--%>
-<%--                                <div class="blog-date text-center">--%>
-<%--                                    <span>24</span>--%>
-<%--                                    <p>Now</p>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="blog-cap">--%>
-<%--                                <p>|   Properties</p>--%>
-<%--                                <h3><a href="single-blog.html">Footprints in Time is perfect House in Kurashiki</a></h3>--%>
-<%--                                <a href="#" class="more-btn">Read more »</a>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--    <!-- Blog Area End -->--%>
 
 </main>
+
+<script>
+    // Preloader Script
+    document.addEventListener("DOMContentLoaded", function() {
+        var preloader = document.getElementById('preloader');
+        var progressDiv = document.getElementById('progress_div');
+        var bar = document.getElementById('bar1');
+        var percent = document.getElementById('percent1');
+
+        var loadProgress = 0;
+        var interval = setInterval(function() {
+            loadProgress += 1;
+            bar.style.width = loadProgress + '%';
+            percent.innerText = loadProgress + '%';
+
+            if (loadProgress >= 100) {
+                clearInterval(interval);
+                preloader.style.display = 'none'; // Hide preloader
+            }
+        }, 30); // Adjust the interval speed as needed
+    });
+</script>
 
 </body>
 </html>

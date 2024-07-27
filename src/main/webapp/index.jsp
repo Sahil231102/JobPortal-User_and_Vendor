@@ -8,6 +8,66 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <style>
+        .pre-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f0f0f0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pre-loader-box {
+            text-align: center;
+        }
+
+        .loading {
+            animation: spin 2s infinite linear;
+        }
+
+        /*@keyframes spin {*/
+        /*    0% {*/
+        /*        transform: rotate(0deg);*/
+        /*    }*/
+
+        /*    100% {*/
+        /*        transform: rotate(360deg);*/
+        /*    }*/
+        /*}*/
+
+        .loader-progress {
+            height: 15px;
+            width: 280px;
+            align-items: center;
+            background-color: #0b0b0b;
+            border-radius: 13px;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+
+        .bar {
+            width: 0;
+            height: 15px;
+            background-color: #3498db;
+            border-radius: 13px;
+            transition: width 0.2s ;
+        }
+
+        .percent {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .loading-text {
+            font-size: 16px;
+            color: #777;
+        }
+    </style>
     <title>Title</title>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
     <link rel="manifest" href="./site.webmanifest">
@@ -28,6 +88,7 @@
 
 </head>
 <body>
+
 <header class="header-area header-transparrent">
   <jsp:include page="./userComponet/header.jsp"></jsp:include>
 </header>
