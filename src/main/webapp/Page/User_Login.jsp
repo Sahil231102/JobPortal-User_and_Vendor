@@ -50,12 +50,12 @@
             <div class="slider-tab"></div>
         </div>
         <div class="form-inner">
-            <form action="#" class="login" id="userLoginForm">
+            <form action="UserLoginServlet" class="login" id="userLoginForm">
                 <div class="field">
-                    <input type="email" placeholder="User Email Address" id="userEmail" required>
+                    <input type="email" placeholder="User Email Address" id="userEmail" name="email" required>
                 </div>
                 <div class="field">
-                    <input type="password" placeholder="Password" id="userPassword" required>
+                    <input type="password" placeholder="Password" id="userPassword" name="password" required>
                 </div>
                 <div class="pass-link"><a href="#">Forgot password?</a></div>
                 <div class="field btn">

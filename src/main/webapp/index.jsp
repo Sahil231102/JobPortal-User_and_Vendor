@@ -134,8 +134,17 @@
         break;
         case "userProfile":
     %>
-
     <jsp:include page="Page/UserProfile.jsp"/>
+    <%
+        break;
+        case "jobApply":
+    %>
+    <jsp:include page="Page/Job_Apply.jsp"/>
+    <%
+        break;
+        case "jobApplyFrom":
+    %>
+    <jsp:include page="Page/Show_Apply_Job.jsp"/>
     <%
         break;
         }

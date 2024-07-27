@@ -35,20 +35,11 @@
 
 <body>
 <!-- Preloader Start -->
-<div id="preloader-active">
-    <div class="preloader d-flex align-items-center justify-content-center">
-        <div class="preloader-inner position-relative">
-            <div class="preloader-circle"></div>
-            <div class="preloader-img pere-text">
-                <img src="assets/img/logo/logo.png" alt="">
-            </div>
-        </div>
-    </div>
-</div>
+
 <!-- Preloader Start -->
 
 <div style="padding: 10%">
-<div style="padding: 5%;background-color: #4C5B5C;color:black;  font-size: 20px; border-radius:50px" >
+<div style="padding: 5%;background-color: #E5E4E2;color:black;  font-size: 20px; border-radius:50px" >
     <form action="SEND ADDRESS" id="ft-form" method="POST" accept-charset="UTF-8" enctype="multipart/form-data"  >
 
         <fieldset>
@@ -76,7 +67,7 @@
             </div>
             <label>
                 Address
-                <input type="text" name="Address">
+                <textarea type="text"  name="Address"></textarea>
             </label>
             <div class="two-cols">
                 <label>
@@ -98,27 +89,32 @@
                     <input type="email" name="Email" required>
                 </label>
             </div>
+            <div class="two-cols">
+                <label>
+                    College Name *
+                    <input type="text" name="CollegeName"  required>
+                </label>
+                <label>
+                    Course Name *
+                    <input type="text" name="CourseName" required>
+                </label>
+            </div>
         </fieldset>
         <fieldset>
-            <legend>Application documents</legend>
+            <legend>Upload documents</legend>
             <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
             <div class="two-cols">
                 <label>
-                    Application letter
-                    <input type="file" name="Application_letter" accept=".doc,.docx,.pdf">
+                    Resume
+                    <input type="file" name="Resume" accept=".doc,.docx,.pdf">
                 </label>
+
 
             </div>
             <p style="color: tan">Possible file types: DOC, PDF. Maximum file size: 10 MB.</p>
         </fieldset>
-        <fieldset>
-            <div>
-                <label>
-                    <input type="checkbox" name="Data processing confirmed" value="Yes" required>
-                    <span>I agree to the processing of my data for the handling of my request by <a href="https://form.taxi/en" target="_blank">Form.taxi</a>. *</span>
-                </label>
-            </div>
-        </fieldset>
+
+
         <div class="btns">
             <input type="text" name="_gotcha" value="" style="display:none;">
             <input style="color: #0b0b0b" type="submit" value="Submit application">

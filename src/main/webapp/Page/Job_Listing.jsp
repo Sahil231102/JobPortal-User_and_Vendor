@@ -132,19 +132,7 @@
 
 <main>
     <!-- Hero Area Start-->
-    <div class="slider-area">
-        <div class="single-slider section-pad-t30 slider-height2 d-flex align-items-md-center" style="background-image: url('./userstyle/assets/img/findJobScreen/findjobimg.jpg'); height: 100%; width: 100%">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-8">
-                        <div class="hero-cap text-center">
-                            <h2>Get your job</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- Hero Area End -->
 
     <!-- Job List Area Start -->
