@@ -15,8 +15,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-@WebServlet(name = "JobApplyServlet",value = "/JobApplyServlet")
+@WebServlet(name = "JobApplyServlet", value = "/JobApplyServlet")
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
         maxFileSize = 1024 * 1024 * 10,      // 10 MB
@@ -24,18 +26,18 @@ import java.sql.SQLException;
 )
 public class JobApplyServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    private static final Logger logger = Logger.getLogger(JobApplyServlet.class.getName());
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
-
         try {
+            // Retrieve parameters
             String fname = req.getParameter("fname");
             String lname = req.getParameter("lname");
-            String Gender = req.getParameter("Gender");
+            String gender = req.getParameter("Gender");
             String citizenship = req.getParameter("citizenship");
-            String DateOfBirth = req.getParameter("DateOfBirth");
-            String Address = req.getParameter("Address");
+            String dateOfBirth = req.getParameter("DateOfBirth");
+            String address = req.getParameter("Address");
             String pincode = req.getParameter("pincode");
             String city = req.getParameter("city");
             String phone = req.getParameter("phone");
@@ -45,54 +47,49 @@ public class JobApplyServlet extends HttpServlet {
             String collegename = req.getParameter("collegename");
             String coursename = req.getParameter("coursename");
 
-            System.out.println(fname);
-            System.out.println(lname);
-            System.out.println(Gender);
-            System.out.println(citizenship);
-            System.out.println(DateOfBirth);
-            System.out.println(Address);
-            System.out.println(pincode);
-            System.out.println(phone);
-            System.out.println(city);
-            System.out.println(email);
-            System.out.println(jobname);
-            System.out.println(companyname);
-            System.out.print(collegename);
-            System.out.println(coursename);
-            Part Resume = req.getPart("resume");
-            InputStream inputStream = Resume.getInputStream();
-            byte[] ResumeImges = readByteFromInputstream(inputStream);
+            // Validate parameters
+            if (fname == null || lname == null || email == null || jobname == null || companyname == null) {
+                throw new ServletException("Missing required form fields.");
+            }
 
-            JobApplyModel jModel = new JobApplyModel(fname,lname,citizenship,DateOfBirth,Gender,Address,phone,email,jobname,companyname,ResumeImges,collegename,coursename,pincode,city);
+            Part resumePart = req.getPart("resume");
+            byte[] resumeBytes = readBytesFromInputStream(resumePart.getInputStream());
+
+            // Create JobApplyModel object
+            JobApplyModel jModel = new JobApplyModel(fname, lname, citizenship, dateOfBirth, gender, address, phone, email, jobname, companyname, resumeBytes, collegename, coursename, pincode, city);
+
+            // Save application to database
             JobApplyDB jDB = new JobApplyDB();
-            boolean finalJobApply = jDB.JobApplyDB(jModel);
+            boolean isJobApplied = jDB.JobApplyDB(jModel);
 
-            if(finalJobApply)
-            {
-                resp.sendRedirect("/Page/Show_Apply_Job.jsp");
+            // Redirect or forward based on the result
+            if (isJobApplied) {
+                resp.sendRedirect("Page/Show_Apply_Job.jsp");
+            } else {
+                RequestDispatcher rd = req.getRequestDispatcher("jobApplyForm.jsp");
+                req.setAttribute("errorMessage", "Failed to apply for the job. Please try again.");
+                rd.forward(req, resp);
             }
-            else
-            {
-                RequestDispatcher rd = req.getRequestDispatcher("/Page/Job_Apply.jsp");
-                rd.include(req,resp);
-
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException | ClassNotFoundException e) {
+            logger.log(Level.SEVERE, "Database error: " + e.getMessage(), e);
+            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while processing your request.");
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "I/O error: " + e.getMessage(), e);
+            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An I/O error occurred.");
+        } catch (ServletException e) {
+            logger.log(Level.SEVERE, "Servlet error: " + e.getMessage(), e);
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "A required parameter is missing or invalid.");
         }
-
-
     }
-    private byte[] readByteFromInputstream(InputStream inputStream) throws IOException {
-        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-        int  ByteRead;
-        byte[] data = new byte[1024];
-        while((ByteRead=inputStream.read(data,0, data.length))!=-1)
-        {
-            buffer.write(data,0,ByteRead);
+
+    private byte[] readBytesFromInputStream(InputStream inputStream) throws IOException {
+        try (ByteArrayOutputStream buffer = new ByteArrayOutputStream()) {
+            int bytesRead;
+            byte[] data = new byte[1024];
+            while ((bytesRead = inputStream.read(data, 0, data.length)) != -1) {
+                buffer.write(data, 0, bytesRead);
+            }
+            return buffer.toByteArray();
         }
-        return buffer.toByteArray();
     }
 }
