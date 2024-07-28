@@ -165,7 +165,7 @@
                             <li>Application End date : <span><%=endDate%></span></li>
                         </ul>
                         <div class="apply-btn2">
-                            <a href=".?pname=JobApply" class="btn">Apply Now</a>
+                            <a href=".?pname=jobApplyForm" class="btn">Apply Now</a>
                         </div>
                     </div>
                     <div class="post-details4  mb-50">

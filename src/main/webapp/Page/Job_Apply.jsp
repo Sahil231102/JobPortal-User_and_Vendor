@@ -8,6 +8,70 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html class="no-js" lang="zxx">
 <head>
+    <style>
+        form .gender-details .gender-title{
+            font-size: 20px;
+
+        }
+        form .category{
+            border-style: solid;
+            display: revert;
+            width: 80%;
+            margin: 14px 0 ;
+            justify-content: space-around;
+        }
+        form .category label{
+
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+        }
+        form .category label .dot{
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background: #d9d9d9;
+            border: 5px solid transparent;
+            transition: all 0.3s ease;
+        }
+        #dot-1:checked ~ .category label .one,
+        #dot-2:checked ~ .category label .two,
+        #dot-3:checked ~ .category label .three{
+            background: #9b59b6;
+            border-color: #d9d9d9;
+        }
+        form input[type="radio"]{
+            display: none;
+        }
+
+        @media(max-width: 584px){
+            .container{
+                max-width: 100%;
+            }
+            form .user-details .input-box{
+                margin-bottom: 15px;
+                width: 100%;
+            }
+            form .category{
+                width: 100%;
+            }
+            .content form .user-details{
+                max-height: 300px;
+                overflow-y: scroll;
+            }
+            .user-details::-webkit-scrollbar{
+                width: 5px;
+            }
+        }
+        @media(max-width: 459px){
+            .container .content .category{
+                flex-direction: column;
+            }
+        }
+
+    </style>
 
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
     <meta charset="utf-8">
@@ -40,63 +104,81 @@
 
 <div style="padding: 10%">
 <div style="padding: 5%;background-color: #E5E4E2;color:black;  font-size: 20px; border-radius:50px" >
-    <form action="SEND ADDRESS" id="ft-form" method="POST" accept-charset="UTF-8" enctype="multipart/form-data"  >
+    <form action="./JobApplyServlet" id="ft-form" method="POST" enctype="multipart/form-data"  >
 
         <fieldset>
             <legend>Personal data</legend>
             <div class="two-cols">
-                <input type="hidden" name="companyName">
+                <input type="hidden" name="companyname" value="XYZ">
+                <input type="hidden" name="jobname" value="abc">
                 <label>
                     First name *
-                    <input type="text" name="First name" required>
+                    <input type="text" name="fname" required>
                 </label>
                 <label>
                     Last name *
-                    <input type="text" name="Last name" required>
+                    <input type="text" name="lname" required>
                 </label>
+            </div>
+            <div class="gender-details">
+                <label class="gender-title">Gender *</label>
+                <div class="category">
+                    <input type="radio" name="Gender" id="dot-1" value="male">
+                        <span class="dot one"></span>
+                        <span class="gender">Male</span>
+
+                    <input type="radio" name="Gender" id="dot-2" value="female">
+                        <span class="dot two"></span>
+                        <span class="gender">Female</span>
+
+                    <input type="radio" name="Gender" id="dot-3" value="prefer_not_to_say">
+                        <span class="dot three"></span>
+                        <span class="gender">Prefer not to say</span>
+
+                </div>
             </div>
             <div class="two-cols">
                 <label>
-                    Citizenship
-                    <input type="text" name="Citizenship">
+                    Citizenship *
+                    <input type="text" name="citizenship" required>
                 </label>
                 <label>
-                    Date of birth
-                    <input type="date" name="Date of birth">
+                    Date of birth *
+                    <input type="date" name="DateOfBirth" required>
                 </label>
             </div>
             <label>
-                Address
-                <textarea type="text"  name="Address"></textarea>
+                Address *
+                <textarea type="text"  name="Address" required></textarea>
             </label>
             <div class="two-cols">
                 <label>
-                    ZIP Code
-                    <input type="text" name="ZIP">
+                    Pin Code *
+                    <input type="text" name="pincode">
                 </label>
                 <label>
-                    City
-                    <input type="text" name="City">
+                    City *
+                    <input type="text" name="city">
                 </label>
             </div>
             <div class="two-cols">
                 <label>
                     Phone *
-                    <input type="tel" name="Phone" maxlength="10" required>
+                    <input type="tel" name="phone" maxlength="10" required>
                 </label>
                 <label>
                     Email address *
-                    <input type="email" name="Email" required>
+                    <input type="email" name="email" required>
                 </label>
             </div>
             <div class="two-cols">
                 <label>
                     College Name *
-                    <input type="text" name="CollegeName"  required>
+                    <input type="text" name="collegename"  required>
                 </label>
                 <label>
                     Course Name *
-                    <input type="text" name="CourseName" required>
+                    <input type="text" name="coursename" required>
                 </label>
             </div>
         </fieldset>
@@ -106,7 +188,7 @@
             <div class="two-cols">
                 <label>
                     Resume
-                    <input type="file" name="Resume" accept=".doc,.docx,.pdf">
+                    <input type="file" name="resume" accept=".doc,.docx,.pdf">
                 </label>
 
 
@@ -116,8 +198,8 @@
 
 
         <div class="btns">
-            <input type="text" name="_gotcha" value="" style="display:none;">
-            <input style="color: #0b0b0b" type="submit" value="Submit application">
+
+            <input style="color: #0b0b0b" type="submit">
         </div>
     </form>
 </div>

@@ -38,7 +38,7 @@
                                     <li><a style="text-decoration: none" href=".?pname=Home">Home</a></li>
                                     <li><a  style="text-decoration: none" href=".?pname=findJobs">Find a Jobs </a></li>
                                     <li><a style="text-decoration: none" href=".?pname=About">About</a></li>
-                                    <li><a style="text-decoration: none" href=".?pname=jobApplyFrom">Apply</a></li>
+                                    <li><a style="text-decoration: none" href=".?pname=jobApplyData">Apply</a></li>
                                     <li><a style="text-decoration: none" href=".?pname=Contact">Contact</a></li>
 <%--                                    <li><a href=".?pname=userProfile">Profile</a></li>--%>
 
