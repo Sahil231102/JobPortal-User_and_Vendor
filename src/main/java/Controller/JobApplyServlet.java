@@ -26,7 +26,6 @@ import java.util.logging.Logger;
 )
 public class JobApplyServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private static final Logger logger = Logger.getLogger(JobApplyServlet.class.getName());
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -47,38 +46,22 @@ public class JobApplyServlet extends HttpServlet {
             String collegename = req.getParameter("collegename");
             String coursename = req.getParameter("coursename");
 
-            // Validate parameters
-            if (fname == null || lname == null || email == null || jobname == null || companyname == null) {
-                throw new ServletException("Missing required form fields.");
-            }
-
             Part resumePart = req.getPart("resume");
             byte[] resumeBytes = readBytesFromInputStream(resumePart.getInputStream());
-
-            // Create JobApplyModel object
             JobApplyModel jModel = new JobApplyModel(fname, lname, citizenship, dateOfBirth, gender, address, phone, email, jobname, companyname, resumeBytes, collegename, coursename, pincode, city);
-
-            // Save application to database
             JobApplyDB jDB = new JobApplyDB();
             boolean isJobApplied = jDB.JobApplyDB(jModel);
 
-            // Redirect or forward based on the result
             if (isJobApplied) {
-                resp.sendRedirect("Page/Show_Apply_Job.jsp");
+                resp.sendRedirect(".?pname=jobApplyData");
             } else {
                 RequestDispatcher rd = req.getRequestDispatcher("jobApplyForm.jsp");
                 req.setAttribute("errorMessage", "Failed to apply for the job. Please try again.");
                 rd.forward(req, resp);
             }
-        } catch (SQLException | ClassNotFoundException e) {
-            logger.log(Level.SEVERE, "Database error: " + e.getMessage(), e);
-            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while processing your request.");
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, "I/O error: " + e.getMessage(), e);
-            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An I/O error occurred.");
-        } catch (ServletException e) {
-            logger.log(Level.SEVERE, "Servlet error: " + e.getMessage(), e);
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "A required parameter is missing or invalid.");
+        } catch (Exception e) {
+
+          e.printStackTrace();
         }
     }
 

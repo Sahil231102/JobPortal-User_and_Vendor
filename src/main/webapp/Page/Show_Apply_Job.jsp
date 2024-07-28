@@ -59,7 +59,7 @@
     </div>
     <%
         int count=0;
-        String sql="select * from add_job";
+        String sql="SELECT * FROM job_apply";
         int id = 3;
         try
         {
@@ -67,29 +67,13 @@
             PreparedStatement psmt = con.prepareStatement(sql);
             psmt.execute();
             ResultSet rs = psmt.getResultSet();
-            for(int i=1; i<=5;i++)
-            {
-                count++;
 
-                if (rs.next()) {
 
-                    String Jobname= rs.getString("Job_Name");
+                while (rs.next()) {
 
-                    String Company_name= rs.getString("Company_Name");
-                    String city = rs.getString("City");
-                    String state= rs.getString("State");
-                    String email = rs.getString("Email");
-                    String phone = rs.getString("Phone_Number");
-                    String salary = rs.getString("Salary");
-                    String jobtype = rs.getString("JobType");
-                    String startdate = rs.getString("StartDate");
-                    String enddate = rs.getString("EndDate");
-                    String jobDescription = rs.getString("JobDescription");
-                    String vacancy = rs.getString("vacancy");
-
-                    byte[] Cimg = rs.getBytes("companyImg");
-                    String imgbyte = Base64.getEncoder().encodeToString(Cimg);
-                    String companyImg = "data:image/png;base64,"+imgbyte;
+                    String cname= rs.getString("Company_name");
+                    String jobname = rs.getString("Job_name");
+                    String status = rs.getString("Status");
 
 
 
@@ -107,10 +91,10 @@
                     <div class="job-items">
 
                         <div class="job-tittle">
-                            <a style="text-decoration: none" href="job_details.html"><h4><%=Company_name%></h4></a>
+                            <a style="text-decoration: none" href="job_details.html"><h4><%=cname%></h4></a>
                             <ul style="padding-left: 0px">
-                                <li ><%=Jobname%></li>
-                                <li><i class="fas fa-map-marker-alt"></i><%=city%>,<%=state%></li>
+                                <li ><%=jobname%></li>
+                                <li><i class="fas fa-map-marker-alt"></i></li>
 
                             </ul>
                         </div>
@@ -127,7 +111,7 @@
     </div>
     <%
                 }
-            }
+
         }
         catch (Exception e)
         {
