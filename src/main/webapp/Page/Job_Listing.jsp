@@ -382,7 +382,7 @@
                                                 </button>
                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
                                                     <li><a class="dropdown-item" href="#">Apply</a></li>
-                                                    <li><a class="dropdown-item" href=".?pname=jobDetails">View</a></li>
+                                                    <li><a class="dropdown-item" href=".?pname=jobDetails&jobid=<%=jobid%>">View</a></li>
                                                 </ul>
                                             </div>
 

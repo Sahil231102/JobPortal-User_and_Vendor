@@ -1,4 +1,4 @@
-<%--
+        <%--
   Created by IntelliJ IDEA.
   User: DELL
   Date: 03-06-2024
@@ -102,6 +102,35 @@
 
 <!-- Preloader Start -->
 
+<%
+
+
+%>
+
+<%
+    HttpSession sessiondata = request.getSession(false); // Get session if exists, don't create a new one
+    String companyName = "";
+    String jobName = "";
+    if (sessiondata != null) {
+        jobName = (String) sessiondata.getAttribute("jobname");
+        companyName = (String) sessiondata.getAttribute("companyname");
+        System.out.println(jobName);
+        System.out.println(companyName);
+    }
+    Cookie[] cookies = request.getCookies();
+    String userEmail = null;
+
+    // Find the cookie that contains the user's email
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if ("em".equals(cookie.getName())) { // Change "userEmail" to the actual cookie name
+                userEmail = cookie.getValue();
+                System.out.println(userEmail);
+                break;
+            }
+        }
+    }
+%>
 <div style="padding: 10%">
 <div style="padding: 5%;background-color: #E5E4E2;color:black;  font-size: 20px; border-radius:50px" >
     <form action="./JobApplyServlet" id="ft-form" method="POST" enctype="multipart/form-data"  >
@@ -109,8 +138,8 @@
         <fieldset>
             <legend>Personal data</legend>
             <div class="two-cols">
-                <input type="hidden" name="companyname" value="XYZ">
-                <input type="hidden" name="jobname" value="abc">
+                <input type="hidden" name="companyname" value="<%=companyName%>">
+                <input type="hidden" name="jobname" value="<%=jobName%>">
                 <input type="hidden" name ="Jobstatus" value="Padding">
                 <label>
                     First name *
@@ -169,7 +198,7 @@
                 </label>
                 <label>
                     Email address *
-                    <input type="email" name="email" required>
+                    <input type="email" name="email" value="<%=userEmail%>" readonly>
                 </label>
             </div>
             <div class="two-cols">

@@ -182,6 +182,9 @@
 
 
                         <button style="font-family: 'Josefin Sans'  , sans-serif" class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal"> Update</button>
+                        <button style="font-family: 'Josefin Sans', sans-serif" class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal2">
+                            Logout
+                        </button>
                         <form enctype="multipart/form-data" method="post" action="./UpdateUserProfileServlet">
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -224,6 +227,29 @@
                                             <!-- Change this button type to submit -->
                                             <button type="submit" class="btn btn-primary">Save changes</button>
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <form action="./User_Login.jsp" method="POST">
+                            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel2">Logout</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to log out?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            <!-- Form submission triggers redirect -->
+                                            <button type="submit" class="btn btn-primary">Logout</button>
                                         </div>
                                     </div>
                                 </div>

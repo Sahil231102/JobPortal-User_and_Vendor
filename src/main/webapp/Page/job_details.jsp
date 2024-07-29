@@ -41,16 +41,23 @@
 <!-- Preloader Start -->
 
 <main>
+
+    <%
+        String id = request.getParameter("jobid");
+
+    %>
 <%
+
+
     try
     {
         Connection con = MyDatabase.getConnection();
-        PreparedStatement psmt = con.prepareStatement("select * from add_job where Job_id=20");
-
+        PreparedStatement psmt = con.prepareStatement("select * from add_job where Job_id=?");
+        psmt.setString(1,id);
         ResultSet rs = psmt.executeQuery();
         while (rs.next())
         {
-            String id = rs.getString(1);
+            String jid = rs.getString(1);
             String jobname = rs.getString("Job_Name");
             String companyname = rs.getString("Company_Name");
             String city = rs.getString("City");
@@ -69,10 +76,20 @@
             String imgByte = Base64.getEncoder().encodeToString(comimg);
             String comimgs = "data:image/png;base64," + imgByte;
 
+
+
 %>
+
+    <%
+      HttpSession sessiondata = request.getSession();
+      sessiondata.setAttribute("jobname",jobname);
+      sessiondata.setAttribute("companyname",companyname);
+
+
+    %>
     <!-- Hero Area Start-->
     <div class="slider-area ">
-        <div class="single-slider section-pad-t30 slider-height2 d-flex align-items-md-center" style="background-image: url('./userstyle/assets/img/jobDetails/ui-uximg.jpg'); height: 100%; width: 100%">
+        <div class="single-slider section-pad-t30 slider-height2 d-flex align-items-md-center" style="background-image: url('./userstyle/assets/img/jobDetails/JobDetails.jpg'); height: 50%; width: 100%">
         <div class="container">
                 <div class="row">
                     <div class="col-xl-12">

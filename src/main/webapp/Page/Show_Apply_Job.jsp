@@ -57,14 +57,31 @@
             </div>
         </div>
     </div>
+
+    <%
+        Cookie[] cookies = request.getCookies();
+        String userEmail = null;
+
+        // Find the cookie that contains the user's email
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("em".equals(cookie.getName())) { // Change "userEmail" to the actual cookie name
+                    userEmail = cookie.getValue();
+                    System.out.println(userEmail);
+                    break;
+                }
+            }
+        }
+    %>
     <%
         int count=0;
-        String sql="SELECT * FROM job_apply";
+
         int id = 3;
         try
         {
             Connection con = MyDatabase.getConnection();
-            PreparedStatement psmt = con.prepareStatement(sql);
+            PreparedStatement psmt = con.prepareStatement("SELECT * FROM job_apply where  Email=?");
+            psmt.setString(1,userEmail);
             psmt.execute();
             ResultSet rs = psmt.getResultSet();
 
