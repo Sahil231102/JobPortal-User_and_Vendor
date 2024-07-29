@@ -2,7 +2,8 @@
 <%@ page import="DAO.MyDatabase" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.util.Base64" %><%--
+<%@ page import="java.util.Base64" %>
+<%@ page import="java.sql.PreparedStatement" %><%--
   Created by IntelliJ IDEA.
   User: DELL
   Date: 20-07-2024
@@ -79,11 +80,27 @@
 </head>
 <body>
 <%
+    Cookie[] cookies = request.getCookies();
+    String userEmail = null;
+
+    // Find the cookie that contains the user's email
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if ("em".equals(cookie.getName())) { // Change "userEmail" to the actual cookie name
+                userEmail = cookie.getValue();
+                System.out.println(userEmail);
+                break;
+            }
+        }
+    }
+
+    System.out.println(userEmail);
     try
     {
         Connection con = MyDatabase.getConnection();
-        Statement smt = con.createStatement();
-        ResultSet rs = smt.executeQuery("select * from user where id=3");
+        PreparedStatement pstmt = con.prepareStatement("SELECT * FROM user WHERE Email = ?");
+        pstmt.setString(1, userEmail);
+        ResultSet rs = pstmt.executeQuery();
         while (rs.next())
         {
             String id = rs.getString(1);

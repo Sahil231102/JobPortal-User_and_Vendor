@@ -45,10 +45,11 @@ public class JobApplyServlet extends HttpServlet {
             String companyname = req.getParameter("companyname");
             String collegename = req.getParameter("collegename");
             String coursename = req.getParameter("coursename");
+            String jobStatus = req.getParameter("Jobstatus");
 
             Part resumePart = req.getPart("resume");
             byte[] resumeBytes = readBytesFromInputStream(resumePart.getInputStream());
-            JobApplyModel jModel = new JobApplyModel(fname, lname, citizenship, dateOfBirth, gender, address, phone, email, jobname, companyname, resumeBytes, collegename, coursename, pincode, city);
+            JobApplyModel jModel = new JobApplyModel(fname, lname, citizenship, dateOfBirth, gender, address, phone, email, jobname, companyname, resumeBytes, collegename, coursename, pincode, city,jobStatus);
             JobApplyDB jDB = new JobApplyDB();
             boolean isJobApplied = jDB.JobApplyDB(jModel);
 

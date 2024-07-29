@@ -72,8 +72,11 @@
                 while (rs.next()) {
 
                     String cname= rs.getString("Company_name");
-                    String jobname = rs.getString("Job_name");
-                    String status = rs.getString("Status");
+                    String jobname = rs.getString("JobName");
+                    String Applydate = rs.getString("Apply_Date");
+                    String jobStatus = rs.getString("JobStatus");
+
+
 
 
 
@@ -94,13 +97,13 @@
                             <a style="text-decoration: none" href="job_details.html"><h4><%=cname%></h4></a>
                             <ul style="padding-left: 0px">
                                 <li ><%=jobname%></li>
-                                <li><i class="fas fa-map-marker-alt"></i></li>
+                                <li><%=Applydate%></li>
 
                             </ul>
                         </div>
                     </div>
                     <div class="items-link f-right">
-                        <a style="text-decoration: none" href="job_details.html">Padding</a>
+                        <a style="text-decoration: none" href="job_details.html"><%=jobStatus%></a>
                     </div>
                 </div>
                 <!-- single-job-content -->

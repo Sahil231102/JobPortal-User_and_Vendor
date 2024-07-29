@@ -1,9 +1,6 @@
-<%@ page import="java.sql.Connection" %>
 <%@ page import="DAO.MyDatabase" %>
-<%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.util.Base64" %><%--
+<%@ page import="java.util.Base64" %>
+<%@ page import="java.sql.*" %><%--
   Created by IntelliJ IDEA.
   User: DELL
   Date: 04-06-2024
@@ -49,10 +46,27 @@
                         </div>
                         <%
 
+                            Cookie[] cookies = request.getCookies();
+
+                            String userEmail= null;
+
+                            if(cookies!=null)
+                            {
+                                for (Cookie cookie : cookies)
+                                {
+                                    if("em".equals(cookie.getName()))
+                                    {
+                                        userEmail = cookie.getValue();
+                                        break;
+                                    }
+                                }
+                            }
+
                             try {
                                 Connection con = MyDatabase.getConnection();
-                                Statement st = con.createStatement();
-                                ResultSet rs = st.executeQuery(" SELECT Uimg FROM user WHERE id = 3");
+                               PreparedStatement psmt = con.prepareStatement(" SELECT Uimg FROM user WHERE Email=?");
+                               psmt.setString(1,userEmail);
+                                ResultSet rs = psmt.executeQuery();
                                 while (rs.next())
                                 {
                                     byte[] uimg = rs.getBytes("Uimg");

@@ -7,9 +7,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -32,7 +30,10 @@ public class UserLoginServlet extends HttpServlet {
 
             if(UserLogin)
             {
-                resp.sendRedirect("./index.jsp");
+                Cookie c = new Cookie("em",email);
+                resp.addCookie(c);
+
+                resp.sendRedirect(req.getContextPath() + "/?pname=Home");
 //                RequestDispatcher rq=req.getRequestDispatcher(req.getContextPath())+".?");
 //                rq.forward(req,resp);
             }

@@ -31,6 +31,7 @@
         padding: 10px;
     }
     .card{border-color: #0b1c39;
+        padding: 10px;
         background: #ffffff;
         border-radius: 15px;
         max-width: 300px;
@@ -41,7 +42,7 @@
     }
     .card__header{
         height: 100PX;
-        padding: 24px;
+        padding: 4px;
         display: flex;
         align-items: center;
     }
@@ -396,11 +397,11 @@
                                         </div>
 
 
-                                        <div style="text-align: center;padding: 8px">
-                                            <button type="button" href="href=.?pname=jobDetails"></button>
+<%--                                        <div style="text-align: center;padding: 8px">--%>
+<%--                                            <button type="button" href="href=.?pname=jobDetails"></button>--%>
 
 
-                                        </div>
+<%--                                        </div>--%>
                                     </div>
                                 </div>
                                 <% count++; if (count % 2 == 0) { // Close the row after 2 columns %>

@@ -16,10 +16,11 @@ public class JobApplyModel {
     private String Companyname;
     private String Collegename;
     private String Coursename;
+    private String jobstatus;
 
     private byte[]  resume;
 
-    public JobApplyModel(String Fname, String Lname, String Citizenship, String Date_of_Birth, String Gender, String Address, String Phone, String Email,String companyname, String jobname, byte[] resume, String Collegename, String Coursename, String pincode, String city) {
+    public JobApplyModel(String Fname, String Lname, String Citizenship, String Date_of_Birth, String Gender, String Address, String Phone, String Email,String companyname, String jobname, byte[] resume, String Collegename, String Coursename, String pincode, String city,String jobstatus) {
         this.Fname = Fname;
         this.Lname = Lname;
         this.Citizenship = Citizenship;
@@ -35,6 +36,7 @@ public class JobApplyModel {
         this.Coursename = Coursename;
         this.pincode = pincode;
         this.city = city;
+        this.jobstatus = jobstatus;
 
     }
 
@@ -156,5 +158,13 @@ public class JobApplyModel {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getJobstatus() {
+        return jobstatus;
+    }
+
+    public void setJobstatus(String jobstatus) {
+        this.jobstatus = jobstatus;
     }
 }

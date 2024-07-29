@@ -10,7 +10,7 @@ public class JobApplyDB {
 
     public  boolean JobApplyDB(JobApplyModel jobApplyModel) throws SQLException, ClassNotFoundException {
 
-        String sql ="INSERT INTO job_apply (First_name, Last_name, Gender, Citizenship, Date_Of_Birth, Address, Pincode, City, Phone_number, Email, Resume,JobName, Company_name, CollegeName, Coursename) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql ="INSERT INTO job_apply (First_name, Last_name, Gender, Citizenship, Date_Of_Birth, Address, Pincode, City, Phone_number, Email, Resume,JobName, Company_name, CollegeName, Coursename,JobStatus) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 
           try
@@ -33,6 +33,7 @@ public class JobApplyDB {
               ps.setString(13,jobApplyModel.getCompanyname());
               ps.setString(14,jobApplyModel.getCollegename());
               ps.setString(15, jobApplyModel.getCoursename());
+              ps.setString(16,jobApplyModel.getJobstatus());
 
               int Applyjob = ps.executeUpdate();
 

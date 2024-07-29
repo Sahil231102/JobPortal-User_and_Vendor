@@ -111,6 +111,7 @@
             <div class="two-cols">
                 <input type="hidden" name="companyname" value="XYZ">
                 <input type="hidden" name="jobname" value="abc">
+                <input type="hidden" name ="Jobstatus" value="Padding">
                 <label>
                     First name *
                     <input type="text" name="fname" required>
@@ -199,7 +200,7 @@
 
         <div class="btns">
 
-            <input style="color: #0b0b0b" type="submit">
+            <input style="color: #0b0b0b" type="submit" name="status" value="Submit">
         </div>
     </form>
 </div>
