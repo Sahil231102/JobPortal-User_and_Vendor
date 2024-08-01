@@ -64,7 +64,7 @@
                 </div>
                 <div class="usersignup-link">Not a member? <a href="UserSignup.jsp">Signup now</a></div>
             </form>
-            <form action="./vendorLoginServlet" method="post" enctype="multipart/form-data" class="signup" id="vendorLoginForm">
+            <form action="vendorLoginServlet" method="post" enctype="multipart/form-data" class="signup" >
                 <div class="field">
                     <input type="email" name="V_email" placeholder="Company Email Address" required>
                 </div>
