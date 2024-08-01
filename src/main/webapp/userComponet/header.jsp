@@ -10,10 +10,10 @@
 <body>
 
 <%
-    String checkvendor = "vendor";  // Corrected the typo from "vandor" to "vendor"
-    String data = "admin";
+
     Cookie[] cookies1 = request.getCookies();
     String checkuser = null;
+    String checkVendor = null;
 
     // Find the cookie that contains the user's email
     if (cookies1 != null) {
@@ -22,6 +22,12 @@
                 checkuser = cookie.getValue();
                 System.out.println(checkuser);
                 break;
+            }
+            else if("vnd".equals(cookie.getName())) {
+                checkVendor = cookie.getValue();
+                System.out.println(checkVendor);
+                break;
+
             }
         }
     }
@@ -101,7 +107,7 @@
 </div>
 
 <%
-} else if ("vendor".equals(checkvendor)) {
+} else if ("vendor".equals(checkVendor)) {
 %>
 
 <div class="header-area header-transparrent">
