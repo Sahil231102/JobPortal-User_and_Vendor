@@ -60,20 +60,20 @@
                 <div class="pass-link"><a href="#">Forgot password?</a></div>
                 <div class="field btn">
                     <div class="btn-layer"></div>
-                    <input type="submit" value="Login">
+                    <input type="submit" name ="user" value="user">
                 </div>
                 <div class="usersignup-link">Not a member? <a href="UserSignup.jsp">Signup now</a></div>
             </form>
-            <form action="#" class="signup" id="vendorLoginForm">
+            <form action="./vendorLoginServlet" method="post" enctype="multipart/form-data" class="signup" id="vendorLoginForm">
                 <div class="field">
-                    <input type="email" placeholder="Company Email Address" required>
+                    <input type="email" name="V_email" placeholder="Company Email Address" required>
                 </div>
                 <div class="field">
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" name="V_password" placeholder="Password" required>
                 </div>
                 <div class="field btn">
                     <div class="btn-layer"></div>
-                    <input type="submit" value="Login">
+                    <input type="submit" name="v_login" value="VLogin">
                 </div>
                 <div class="vendorsignup-link">Not a member? <a href="VendorSignup.jsp">Signup now</a></div>
 

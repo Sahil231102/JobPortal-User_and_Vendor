@@ -112,7 +112,22 @@
                             <span class="flaticon-tour"></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Design & Creative</a></h5>
+                            <%
+                                Cookie[] cookies = request.getCookies();
+                                String userEmail = null;
+                                String checkadmin = null;
+                                // Find the cookie that contains the user's email
+                                if (cookies != null) {
+                                    for (Cookie cookie : cookies) {
+                                        if ("adm".equals(cookie.getName())) { // Change "userEmail" to the actual cookie name
+                                            checkadmin = cookie.getValue();
+                                            System.out.println(checkadmin);
+                                            break;
+                                        }
+                                    }
+                                }
+                            %>
+                            <h5><a href="job_listing.html">Design & Creative<%=checkadmin%></a></h5>
                             <span>(653)</span>
                         </div>
                     </div>

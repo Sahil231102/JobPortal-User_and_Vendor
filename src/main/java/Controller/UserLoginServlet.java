@@ -24,6 +24,8 @@ public class UserLoginServlet extends HttpServlet {
             String email = req.getParameter("email");
             String password = req.getParameter("password");
 
+            String statususer = req.getParameter("user");
+
             UserLoginModel userLoginModel = new UserLoginModel(email,password);
             UserLoginDB uDB = new UserLoginDB();
             boolean UserLogin = uDB.userLogin(userLoginModel);
@@ -31,7 +33,9 @@ public class UserLoginServlet extends HttpServlet {
             if(UserLogin)
             {
                 Cookie c = new Cookie("em",email);
+                Cookie usr = new Cookie("usr",statususer);
                 resp.addCookie(c);
+                resp.addCookie(usr);
 
                 resp.sendRedirect(req.getContextPath() + "/?pname=Home");
 //                RequestDispatcher rq=req.getRequestDispatcher(req.getContextPath())+".?");
