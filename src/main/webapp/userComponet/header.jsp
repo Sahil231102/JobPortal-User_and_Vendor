@@ -18,12 +18,7 @@
     // Find the cookie that contains the user's email
     if (cookies1 != null) {
         for (Cookie cookie : cookies1) {
-            if ("usr".equals(cookie.getName())) {
-                checkuser = cookie.getValue();
-                System.out.println(checkuser);
-                break;
-            }
-            else if("vnd".equals(cookie.getName())) {
+            if("vnd".equals(cookie.getName())) {
                 checkVendor = cookie.getValue();
                 System.out.println(checkVendor);
                 break;
@@ -90,7 +85,8 @@
                         </a>
                         <%
                                 }
-                            } catch (Exception e) {
+                            } catch (Exception e)
+                                {
                                 e.printStackTrace();
                             }
                         %>

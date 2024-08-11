@@ -1,14 +1,10 @@
 package DAO;
-
 import Model.UserLoginModel;
-
 import javax.servlet.annotation.WebServlet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-
 public class UserLoginDB {
     public boolean userLogin(UserLoginModel userLoginModel) {
         String sql = "select * from user where Email = ? and Password = ?";
