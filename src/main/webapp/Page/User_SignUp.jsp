@@ -14,7 +14,7 @@
         <form action="../UserSignupServlet" method="post" enctype="multipart/form-data">
             <div class="user-details">
                 <div class="input-box">
-                    <span class="details">Full Name</span>
+                    <span class="details">First Name</span>
                     <input type="text" name="fname" placeholder="Enter your First name" required>
                 </div>
                 <div class="input-box">
@@ -22,20 +22,34 @@
                     <input type="text" name="lname" placeholder="Enter your Last name" required>
                 </div>
                 <div class="input-box">
+                    <span class="details">Date Of Birth</span>
+                    <input type="date" name="dob" placeholder="Enter your DOB" required>
+                </div>
+                <div class="input-box">
                     <span class="details">Email</span>
                     <input type="email" name="email" placeholder="Enter your email" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Phone Number</span>
-                    <input type="tel" name="phone" placeholder="Enter your number" required>
+                    <input type="tel" name="phone" placeholder="Enter your Mobile number" required>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Under Graduation</span>
+                    <input type="text" name="UG" placeholder="Under Graduation(Enter university/school Name)" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Post Graduation</span>
+                    <input type="text" name="PG" placeholder="Enter your Post Graduation(Enter university Name)" required>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">College Name</span>
+                    <input type="text" name="collegeName" placeholder="Enter your CollegeName" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Password</span>
-                    <input type="password" name="password" placeholder="Enter your password" required>
-                </div>
-                <div class="input-box">
-                    <span class="details">Confirm Password</span>
-                    <input type="password" name="confirmPassword" placeholder="Confirm your password" required>
+                    <input type="password" name="Password" placeholder="Enter your password" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Upload Resume</span>

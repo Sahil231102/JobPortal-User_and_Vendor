@@ -7,10 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 public class UserLoginDB {
     public boolean userLogin(UserLoginModel userLoginModel) {
-        String sql = "select * from user where Email = ? and Password = ?";
+        String sql = "select * from seeker where email = ? and password = ?";
 
         try
         {
+
             Connection con = MyDatabase.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
 

@@ -33,11 +33,11 @@ public class UserLoginServlet extends HttpServlet {
             if(UserLogin)
             {
                 Cookie c = new Cookie("em",email);
-                Cookie usr = new Cookie("usr",statususer);
-                resp.addCookie(c);
-                resp.addCookie(usr);
 
-                resp.sendRedirect(req.getContextPath() + "/?pname=Home");
+                resp.addCookie(c);
+
+
+                resp.sendRedirect(req.getContextPath() + "/index.jsp");
 //                RequestDispatcher rq=req.getRequestDispatcher(req.getContextPath())+".?");
 //                rq.forward(req,resp);
             }

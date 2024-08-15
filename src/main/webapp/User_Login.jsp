@@ -32,14 +32,14 @@
     </style>
     <meta charset="utf-8">
     <title>Login & Signup Form | CodingNepal</title>
-    <link rel="stylesheet" href="userstyle/Loginstyle.css">
+    <link rel="stylesheet" href="./userstyle/Loginstyle.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <div class="wrapper">
     <div class="title-text">
         <div class="title login">User Login</div>
-        <div class="title signup">Vendor Login</div>
+
     </div>
 
         <div class="form-inner">
@@ -55,7 +55,7 @@
                     <div class="btn-layer"></div>
                     <input type="submit" name ="user" value="user">
                 </div>
-                <div class="usersignup-link">Not a member? <a href="UserSignup.jsp">Signup now</a></div>
+                <div class="usersignup-link">Not a member? <a href="Page/User_SignUp.jsp">Signup now</a></div>
             </form>
 
             

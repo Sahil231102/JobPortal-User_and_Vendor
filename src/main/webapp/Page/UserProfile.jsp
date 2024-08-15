@@ -98,20 +98,27 @@
     try
     {
         Connection con = MyDatabase.getConnection();
-        PreparedStatement pstmt = con.prepareStatement("SELECT * FROM user WHERE Email = ?");
+        PreparedStatement pstmt = con.prepareStatement("SELECT * FROM seeker WHERE email = ?");
         pstmt.setString(1, userEmail);
         ResultSet rs = pstmt.executeQuery();
         while (rs.next())
         {
             String id = rs.getString(1);
-            String Fname = rs.getString("First_name");
-            String Lname = rs.getNString("Last_name");
-            String Email = rs.getString("Email");
-            String Phone = rs.getString("Phone_Number");
+            String Fname = rs.getString("fname");
+            String Lname = rs.getNString("lname");
             String Gender = rs.getString("Gender");
-            byte[] cimg = rs.getBytes("Uimg");
-            String imgByte = Base64.getEncoder().encodeToString(cimg);
-            String cimgs = "data:image/png;base64," + imgByte;
+            String Dob = rs.getString("dob");
+
+            String Email = rs.getString("email");
+            String Phone = rs.getString("phoneNumber");
+            String UG   = rs.getString("Undergraduate");
+            String PG   = rs.getString("Postgraduate");
+            String collegeName = rs.getString("collegeName");
+            String SeekerDate = rs.getString("SeekerDate");
+
+            byte[] simg = rs.getBytes("simg");
+            String imgByte = Base64.getEncoder().encodeToString(simg);
+            String simgs = "data:image/png;base64," + imgByte;
 %>
 <main>
     <div class="container-xl px-4 mt-4">
@@ -127,7 +134,7 @@
                     <div class="card-header">Profile Picture</div>
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
-                        <img class="img-account-profile rounded-circle mb-2" src="<%=cimgs%>" alt="">
+                        <img class="img-account-profile rounded-circle mb-2" src="<%=simgs%>" alt="">
                         <!-- Profile picture help block-->
                        </div>
                 </div>
@@ -137,8 +144,6 @@
                 <div class="card mb-4">
                     <div class="card-header">Profile Details</div>
                     <div class="card-body">
-
-
                             <!-- Form Group (username)-->
 
                             <!-- Form Row-->
@@ -146,7 +151,7 @@
                                 <!-- Form Group (first name)-->
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputFirstName">First name</label>
-                                    <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="<%=Fname%>" readonly>
+                                    <input class="form-control"  id="inputFirstName" type="text" placeholder="Enter your first name" value="<%=Fname%>" readonly>
                                 </div>
                                 <!-- Form Group (last name)-->
                                 <div class="col-md-6">
@@ -168,16 +173,41 @@
                                 </div>
                             </div>
                             <!-- Form Group (email address)-->
-
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (organization name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputOrgName">Date of Birth</label>
+                                <input class="form-control"  type="text" placeholder="Enter your organization name" value="<%=Dob%>" readonly>
+                            </div>
+                            <!-- Form Group (location)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLocation">Under Graduation</label>
+                                <input class="form-control"  type="text" placeholder="Enter your location" value="<%=UG%>" readonly>
+                            </div>
+                        </div>
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (organization name)-->
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputOrgName">Gender</label>
-                                    <input class="form-control" type="text" placeholder="Enter your organization name" value="<%=Gender%>" readonly>
+                                    <label class="small mb-1" for="inputOrgName">Post Graduation</label>
+                                    <input class="form-control" type="text" placeholder="Enter your organization name" value="<%=PG%>" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputLocation">College Number</label>
+                                    <input class="form-control"  type="text" placeholder="Enter your location" value="<%=collegeName%>" readonly>
                                 </div>
                                 <!-- Form Group (location)-->
                                                            </div>
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (organization name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputOrgName">Seeker Date</label>
+                                <input class="form-control"  type="text" placeholder="Enter your organization name" value="<%=SeekerDate%>" readonly>
+                            </div>
+                            <!-- Form Group (location)-->
+
+                        </div>
+
                             <!-- Save changes button-->
 
 
@@ -195,10 +225,9 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">
-                                            <label>User Id</label>
-                                            <input type="text" class="form-control" name="id" value="<%=id%>" readonly />
-                                        </div>
+
+                                            <input type="hidden" class="form-control" name="id" value="<%=id%>" readonly />
+
                                         <div class="modal-body">
                                             <label>First name</label>
                                             <input type="text" class="form-control" name="fname" value="<%=Fname%>" />
@@ -208,20 +237,28 @@
                                             <input type="text" class="form-control" name="lname" value="<%=Lname%>" />
                                         </div>
                                         <div class="modal-body">
-                                            <label>Email Address</label>
-                                            <input type="text" class="form-control" name="email" value="<%=Email%>" />
+                                            <label>Date Of Birth</label>
+                                            <input type="text" class="form-control" name="email" value="<%=Dob%>" />
                                         </div>
                                         <div class="modal-body">
                                             <label>Phone Number</label>
                                             <input type="tel" maxlength="10" class="form-control" name="phone" value="<%=Phone%>" />
                                         </div>
                                         <div class="modal-body">
-                                            <label>Gender</label>
-                                            <input type="text" class="form-control" name="Gender" value="<%=Gender%>" />
+                                            <label>Under Graduate</label>
+                                            <input type="text" class="form-control" name="UG" value="<%=UG%>" />
+                                        </div>
+                                        <div class="modal-body">
+                                            <label>Post Graduate</label>
+                                            <input type="text" class="form-control" name="PG" value="<%=PG%>" />
+                                        </div>
+                                        <div class="modal-body">
+                                            <label>College Name</label>
+                                            <input type="text" class="form-control" name="Gender" value="<%=collegeName%>" />
                                         </div>
                                         <div class="modal-body">
                                             <label>Choose Images</label>
-                                            <input type="file" class="form-control" name="updateimg" value="<%=cimg%>" />
+                                            <input type="file" class="form-control" name="updateimg" value="" />
                                         </div>
                                         <div class="modal-footer">
                                             <!-- Change this button type to submit -->

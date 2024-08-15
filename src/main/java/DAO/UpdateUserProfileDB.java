@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class UpdateUserProfileDB {
 
-    String sql = "UPDATE user SET First_name=?,Last_name=?,Email=?,Phone_Number=? ,Gender=?,Uimg=? WHERE id=?";
+    String sql = "UPDATE seeker SET First_name=?,Last_name=?,Email=?,Phone_Number=? ,Gender=?,Uimg=? WHERE id=?";
 
    public boolean UpdateUserProfileDB(UpdateUserProfileModel updateUserProfileModel) throws SQLException, ClassNotFoundException {
        Connection con = MyDatabase.getConnection();

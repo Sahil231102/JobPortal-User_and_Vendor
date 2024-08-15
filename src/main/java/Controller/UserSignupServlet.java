@@ -25,22 +25,34 @@ public class UserSignupServlet extends HttpServlet {
         try {
             String fname = req.getParameter("fname");
             String lname = req.getParameter("lname");
-            String email = req.getParameter("email");
-            String password = req.getParameter("password");
-            String confirmPassword = req.getParameter("confirmPassword");
-            String phone = req.getParameter("phone");
+            String Dob = req.getParameter("dob");
             String gender = req.getParameter("gender");
-
+            String email = req.getParameter("email");
+            String phone = req.getParameter("phone");
+            String password = req.getParameter("Password");
+            String UG = req.getParameter("UG");
+            String PG = req.getParameter("PG");
+            String Collegename =req.getParameter("collegeName");
             Part filePart = req.getPart("uimg");
             InputStream inputStream = filePart.getInputStream();
             byte[] dp = readBytesFromInputStream(inputStream);
-
-            UserSignupModel userSignupModel = new UserSignupModel(fname, lname, email, password, confirmPassword, phone, gender, dp);
+            UserSignupModel userSignupModel = new UserSignupModel(fname, lname, Dob,gender,email,phone,UG,PG,Collegename, password,  dp);
             UserSignupDB uDB = new UserSignupDB();
             boolean userSignUp = uDB.UserSignup(userSignupModel);
-
+            System.out.println(fname);
+            System.out.println(lname);
+            System.out.println(Dob);
+            System.out.println(gender);
+            System.out.println(email);
+            System.out.println(phone);
+            System.out.println(password);
+            System.out.println(UG);
+            System.out.println(PG);
+            System.out.println(Collegename);
+            System.out.println(userSignUp);
             if (userSignUp) {
-               resp.sendRedirect(req.getContextPath() + "/Page/Home.jsp");
+
+               resp.sendRedirect(req.getContextPath() + "Page/Home.jsp");
             } else {
              req.getRequestDispatcher(req.getContextPath()+"Page/User_SignUp.jsp").include(req,resp);
             }

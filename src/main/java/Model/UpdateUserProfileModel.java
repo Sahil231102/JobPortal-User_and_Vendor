@@ -5,6 +5,7 @@ public class UpdateUserProfileModel {
     private String id;
     private String firstName;
     private String lastName;
+    private String DOB;
     private String email;
     private String phone;
     private String Gender;
