@@ -331,28 +331,30 @@
                                 Connection con = db.getConnection();
                                 Statement stmt = con.createStatement();
 
-                                ResultSet rs = stmt.executeQuery("SELECT * FROM add_job");
+                                ResultSet rs = stmt.executeQuery("select * from job_add inner join recuruiter on job_add.r_id = recuruiter.r_id");
                                 int count = 0;
                                 while (rs.next()) {
-                                    String jobid = rs.getString(1);
-                                    String jobName = rs.getString("Job_Name");
                                     String CompanyName = rs.getString("Company_Name");
+                                    String j_id = rs.getString("j_id");
+                                    String r_id = rs.getString("r_id");
+                                    String jobTitle = rs.getString("job_Title");
                                     String city = rs.getString("City");
-                                    String state = rs.getString("State");
-                                    String Email = rs.getString("Email");
-                                    String Phone = rs.getString("Phone_Number");
-                                    String Salary = rs.getString("Salary");
-                                    String JobType = rs.getString("JobType");
-                                    String startDate = rs.getString("StartDate");
-                                    String EndDate = rs.getString("EndDate");
-                                    String JobDes = rs.getString("JobDescription");
-                                    byte[] cimg = rs.getBytes("companyImg");
-                                    String imgByte = Base64.getEncoder().encodeToString(cimg);
-                                    String cimgs = "data:image/png;base64," + imgByte;
-                                    String vacancy = rs.getString("vacancy");
-                                    byte[] pimg = rs.getBytes("Posterimg");
-                                    String imgByte2 = Base64.getEncoder().encodeToString(pimg);
-                                    String pimgs = "data:image/png;base64," + imgByte2;
+                                    String State = rs.getString("State");
+                                    String email = rs.getString("email");
+                                    String EmploymentType = rs.getString("EmploymentType");
+                                    String MinSalary = rs.getString("Minsalary");
+                                    String MaxSalary = rs.getString("Maxsalary");
+                                    String jobDes = rs.getString("jobDescripton");
+                                    String Qualification_and_Skill = rs.getString("Qualification_and_Skill");
+                                    String Benefit = rs.getString("Benefits");
+                                    String JobAddDate = rs.getString("JobAddDate");
+                                    byte[] Poster = rs.getBytes("PosterImg");
+                                    String imgByte = Base64.getEncoder().encodeToString(Poster);
+                                    String posterimgs = "data:image/png;base64," + imgByte;
+
+                                    byte[] companyimg = rs.getBytes("Cimg");
+                                    String imgByte1 = Base64.getEncoder().encodeToString(companyimg);
+                                    String companyImgs = "data:image/png;base64," + imgByte1;
 
                                     if (count % 2 == 0) { // Start a new row every 2 columns
                             %>
@@ -362,11 +364,11 @@
                                     <div class="card">
                                         <div class="card__header">
                                             <div class="avatar">
-                                                <img src="<%=cimgs%>" width="60" height="60" style="border-color: #4C5B5C;border-style: solid" alt="">
+                                                <img src="<%=companyImgs%>" width="60" height="60" style="border-color: #4C5B5C;border-style: solid" alt="">
                                             </div>
                                             <div class="name" style="font-family:'Josefin Sans', sans-serif;">
                                                 <span style="font-size: 16px" ><%=CompanyName%></span>
-                                                <span style="font-size: 12px" > <%=city%>,<%=state%></span>
+                                                <span style="font-size: 12px" > <%=city%>,<%=State%></span>
                                             </div>
 <%--                                            <div class="icon col-lg-1">--%>
 <%--                                                <i class="fa-solid fa-ellipsis-vertical" id="toggleIcon"></i>--%>
@@ -382,18 +384,18 @@
                                                 </button>
                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
                                                     <li><a class="dropdown-item" href="#">Apply</a></li>
-                                                    <li><a class="dropdown-item" href=".?pname=jobDetails&jobid=<%=jobid%>">View</a></li>
+                                                    <li><a class="dropdown-item" href=".?pname=jobDetails&j_id=<%=j_id%>">View</a></li>
                                                 </ul>
                                             </div>
 
 
                                         </div>
                                         <div>
-                                            <p style="font-weight: bold;font-size: 15px;padding-left: 20px;margin: 2px">Job:<%=jobName%></p>
+                                            <p style="font-weight: bold;font-size: 15px;padding-left: 20px;margin: 2px">Job:<%=jobTitle%></p>
                                         </div>
 
                                         <div class="card__body">
-                                            <img src="<%=pimgs%>" style=" height: 40vh;padding: 10px; border-color: #0c5460;border-style: solid; object-fit: cover;" alt="">
+                                            <img src="<%=posterimgs%>" style=" height: 40vh;padding: 10px; border-color: #0c5460;border-style: solid; object-fit: cover;" alt="">
                                         </div>
 
 

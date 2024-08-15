@@ -119,15 +119,15 @@
                                 // Find the cookie that contains the user's email
                                 if (cookies != null) {
                                     for (Cookie cookie : cookies) {
-                                        if ("adm".equals(cookie.getName())) { // Change "userEmail" to the actual cookie name
-                                            checkadmin = cookie.getValue();
-                                            System.out.println(checkadmin);
+                                        if ("em".equals(cookie.getName())) { // Change "userEmail" to the actual cookie name
+                                            userEmail = cookie.getValue();
+                                            System.out.println(userEmail);
                                             break;
                                         }
                                     }
                                 }
                             %>
-                            <h5><a href="job_listing.html">Design & Creative<%=checkadmin%></a></h5>
+                            <h5><a href="job_listing.html">Design & Creative</a></h5>
                             <span>(653)</span>
                         </div>
                     </div>
@@ -253,7 +253,7 @@
             try
             {
                 Connection con = MyDatabase.getConnection();
-                PreparedStatement  psmt = con.prepareStatement("select * from add_job order by Company_name DESC");
+                PreparedStatement  psmt = con.prepareStatement("select * from job_add ");
                 psmt.execute();
                 ResultSet rs = psmt.getResultSet();
                 for(int i=1; i<=5;i++)

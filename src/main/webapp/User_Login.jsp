@@ -8,6 +8,7 @@
         input[type="radio"] {
             display: none;
         }
+
         .wrapper {
             /* Add your desired styles for the wrapper */
         }
@@ -36,7 +37,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper" style="width: 500px">
     <div class="title-text">
         <div class="title login">User Login</div>
 
@@ -44,6 +45,7 @@
 
         <div class="form-inner">
             <form action="./UserLoginServlet" method="post" enctype="multipart/form-data" class="login" id="userLoginForm">
+                <img style="align-items: center;display: flex;justify-content: center" src="userstyle/assets/img/Login/Login.svg" height="180px" width="180px">
                 <div class="field">
                     <input type="email" placeholder="User Email Address" id="userEmail" name="email" required>
                 </div>

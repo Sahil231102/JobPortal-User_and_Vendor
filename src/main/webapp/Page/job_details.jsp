@@ -2,7 +2,8 @@
 <%@ page import="DAO.MyDatabase" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.util.Base64" %><%--
+<%@ page import="java.util.Base64" %>
+<%@ page import="java.sql.Statement" %><%--
   Created by IntelliJ IDEA.
   User: DELL
   Date: 29-05-2024
@@ -43,7 +44,7 @@
 <main>
 
     <%
-        String id = request.getParameter("jobid");
+        String id = request.getParameter("j_id");
 
     %>
 <%
@@ -52,29 +53,34 @@
     try
     {
         Connection con = MyDatabase.getConnection();
-        PreparedStatement psmt = con.prepareStatement("select * from add_job where Job_id=?");
+        PreparedStatement psmt = con.prepareStatement("select * from job_add inner join recuruiter on job_add.r_id = recuruiter.r_id where j_id =?");
         psmt.setString(1,id);
+
         ResultSet rs = psmt.executeQuery();
         while (rs.next())
         {
-            String jid = rs.getString(1);
-            String jobname = rs.getString("Job_Name");
-            String companyname = rs.getString("Company_Name");
+            String CompanyName = rs.getString("Company_Name");
+            String j_id = rs.getString("j_id");
+            String r_id = rs.getString("r_id");
+            String jobTitle = rs.getString("job_Title");
             String city = rs.getString("City");
-            String state = rs.getString("State");
-            String email = rs.getString("Email");
-            String phone = rs.getString("Phone_Number");
-            String salary = rs.getString("Salary");
-            String JobType = rs.getString("JobType");
-            String startDate = rs.getString("StartDate");
-            String endDate = rs.getString("EndDate");
-            String job_Add_Date = rs.getString("Job_Add_Date");
-            String jobdescription = rs.getString("JobDescription");
-            String vacancy = rs.getString("vacancy");
-            String AddJobTime = rs.getString("AddJobTime");
-            byte[] comimg = rs.getBytes("companyImg");
-            String imgByte = Base64.getEncoder().encodeToString(comimg);
-            String comimgs = "data:image/png;base64," + imgByte;
+            String State = rs.getString("State");
+            String Country = rs.getString("Country");
+            String email = rs.getString("email");
+            String EmploymentType = rs.getString("EmploymentType");
+            String MinSalary = rs.getString("Minsalary");
+            String MaxSalary = rs.getString("Maxsalary");
+            String jobDes = rs.getString("jobDescripton");
+            String Qualification_and_Skill = rs.getString("Qualification_and_Skill");
+            String Benefit = rs.getString("Benefits");
+            String JobAddDate = rs.getString("JobAddDate");
+            byte[] Poster = rs.getBytes("PosterImg");
+            String imgByte = Base64.getEncoder().encodeToString(Poster);
+            String posterimgs = "data:image/png;base64," + imgByte;
+
+            byte[] companyimg = rs.getBytes("CImg");
+            String imgByte1 = Base64.getEncoder().encodeToString(companyimg);
+            String companyImgs = "data:image/png;base64," + imgByte1;
 
 
 
@@ -82,8 +88,8 @@
 
     <%
       HttpSession sessiondata = request.getSession();
-      sessiondata.setAttribute("jobname",jobname);
-      sessiondata.setAttribute("companyname",companyname);
+      sessiondata.setAttribute("jobname",jobTitle);
+      sessiondata.setAttribute("companyname",companyimg);
 
 
     %>
@@ -94,7 +100,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap text-center">
-                            <h2><%=jobname%></h2>
+                            <h2><%=jobTitle%></h2>
                         </div>
                     </div>
                 </div>
@@ -112,16 +118,16 @@
                     <div class="single-job-items mb-50">
                         <div class="job-items">
                             <div class="company-img company-img-details">
-                                <a href="#"><img height="120px" style="border-style: solid;border-color: #0b1c39" src="<%=comimgs%>" alt=""></a>
+                                <a href="#"><img height="120px" style="border-style: solid;border-color: #0b1c39;margin-bottom: 30px" src="<%=companyImgs%>" alt=""></a>
                             </div>
                             <div class="job-tittle">
                                 <a href="#">
-                                    <h4><%=companyname%></h4>
+                                    <h4><%=CompanyName%></h4>
                                 </a>
                                 <ul>
-                                    <li><%=jobname%></li>
-                                    <li><i class="fas fa-map-marker-alt"></i><%=city%>,<%=state%></li>
-                                    <li>Rs:<%=salary%></li>
+                                    <li style="text-wrap: nowrap"><%=jobTitle%></li>
+                                    <li><i class="fas fa-map-marker-alt"></i><%=city%>,<%=State%></li>
+                                    <li>Rs:<%=MinSalary%>-<%=MaxSalary%></li>
                                 </ul>
                             </div>
                         </div>
@@ -134,7 +140,23 @@
                             <div class="small-section-tittle">
                                 <h4>Job Description</h4>
                             </div>
-                            <p><%=jobdescription%></p>
+                            <p><%=jobDes%></p>
+                        </div>
+
+                        <div class="post-details1 mb-50">
+                            <!-- Small Section Tittle -->
+                            <div class="small-section-tittle">
+                                <h4>Benefit</h4>
+                            </div>
+                            <p><%=Benefit%></p>
+                        </div>
+
+                        <div class="post-details1 mb-50">
+                            <!-- Small Section Tittle -->
+                            <div class="small-section-tittle">
+                                <h4>Qualification and Skill</h4>
+                            </div>
+                            <p><%=Qualification_and_Skill%></p>
                         </div>
 <%--                        <div class="post-details2  mb-50">--%>
 <%--                            <!-- Small Section Tittle -->--%>
@@ -173,13 +195,13 @@
                             <h4>Job Overview</h4>
                         </div>
                         <ul>
-                            <li>Posted date : <span><%=job_Add_Date%></span></li>
-                            <li>Location : <span><%=city%>,<%=state%></span></li>
-                            <li>Vacancy : <span><%=vacancy%></span></li>
-                            <li>Job nature : <span><%=JobType%></span></li>
-                            <li>Salary :  <span><%=salary%>₹</span></li>
-                            <li>Application Start date : <span><%=startDate%></span></li>
-                            <li>Application End date : <span><%=endDate%></span></li>
+                            <li>Posted date : <span><%=JobAddDate%></span></li>
+                            <li>City : <span><%=city%></span></li>
+                            <li>State:<span><%=State%></span></li>
+                            <li>Country:<span><%=Country%></span></li>
+                            <li>Job nature : <span><%=EmploymentType%></span></li>
+                            <li>Salary :  <span><%=MinSalary%>₹ - <%=MaxSalary%>₹</span></li>
+
                         </ul>
                         <div class="apply-btn2">
                             <a href=".?pname=jobApplyForm" class="btn">Apply Now</a>
@@ -190,11 +212,11 @@
                         <div class="small-section-tittle">
                             <h4>Company Information</h4>
                         </div>
-                        <span><%=companyname%></span>
+                        <span><%=CompanyName%></span>
                         <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                         <ul>
-                            <li>Name: <span><%=companyname%> </span></li>
-                            <li>Web : <span> <%=companyname%>.com</span></li>
+                            <li>Name: <span><%=CompanyName%> </span></li>
+                            <li>Web : <span> <%=CompanyName%>.com</span></li>
                             <li>Email: <span><%=email%></span></li>
                         </ul>
                     </div>
