@@ -38,7 +38,7 @@ public class JobApplyServlet extends HttpServlet {
             Part resumePart = req.getPart("resume");
             byte[] resumeBytes = readBytesFromInputStream(resumePart.getInputStream());
 
-            JobApplyModel jModel = new JobApplyModel(r_id,s_id,j_id,status,resumeBytes);
+            JobApplyModel jModel = new JobApplyModel(s_id,r_id,j_id,status,resumeBytes);
             JobApplyDB jDB = new JobApplyDB();
             boolean isJobApplied = jDB.JobApplyDB(jModel);
 

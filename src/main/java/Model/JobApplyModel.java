@@ -5,12 +5,11 @@ public class JobApplyModel {
    private String j_id;
    private  String r_id;
    private  String s_id;
-
     private String jobstatus;
 
     private byte[]  resume;
 
-    public JobApplyModel(String r_id,String j_id,String s_id,String jobstatus,byte[] resume) {
+    public JobApplyModel(String s_id,String r_id,String j_id,String jobstatus,byte[] resume) {
         this.r_id = r_id;
         this.j_id = j_id;
         this.s_id = s_id;

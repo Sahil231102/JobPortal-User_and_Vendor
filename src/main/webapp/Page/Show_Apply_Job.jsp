@@ -80,7 +80,7 @@
         try
         {
             Connection con = MyDatabase.getConnection();
-            PreparedStatement psmt = con.prepareStatement("SELECT * FROM job_apply where  Email=?");
+            PreparedStatement psmt = con.prepareStatement("SELECT * FROM job_apply where  email=?");
             psmt.setString(1,userEmail);
             psmt.execute();
             ResultSet rs = psmt.getResultSet();
