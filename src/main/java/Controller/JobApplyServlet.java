@@ -31,29 +31,22 @@ public class JobApplyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             // Retrieve parameters
-            String fname = req.getParameter("fname");
-            String lname = req.getParameter("lname");
-            String gender = req.getParameter("Gender");
-            String citizenship = req.getParameter("citizenship");
-            String dateOfBirth = req.getParameter("DateOfBirth");
-            String address = req.getParameter("Address");
-            String pincode = req.getParameter("pincode");
-            String city = req.getParameter("city");
-            String phone = req.getParameter("phone");
-            String email = req.getParameter("email");
-            String jobname = req.getParameter("jobname");
-            String companyname = req.getParameter("companyname");
-            String collegename = req.getParameter("collegename");
-            String coursename = req.getParameter("coursename");
-            String jobStatus = req.getParameter("Jobstatus");
-
+          String s_id = req.getParameter("se_id");
+          String j_id = req.getParameter("jo_id");
+          String r_id = req.getParameter("re_id");
+          String status = req.getParameter("status");
             Part resumePart = req.getPart("resume");
             byte[] resumeBytes = readBytesFromInputStream(resumePart.getInputStream());
-            JobApplyModel jModel = new JobApplyModel(fname, lname, citizenship, dateOfBirth, gender, address, phone, email, jobname, companyname, resumeBytes, collegename, coursename, pincode, city,jobStatus);
+
+            JobApplyModel jModel = new JobApplyModel(r_id,s_id,j_id,status,resumeBytes);
             JobApplyDB jDB = new JobApplyDB();
             boolean isJobApplied = jDB.JobApplyDB(jModel);
 
+
             if (isJobApplied) {
+                System.out.println(r_id);
+                System.out.println(s_id);
+                System.out.println(j_id);
                 resp.sendRedirect(".?pname=jobApplyData");
             } else {
                 RequestDispatcher rd = req.getRequestDispatcher("jobApplyForm.jsp");

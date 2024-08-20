@@ -14,6 +14,7 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
+
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -44,6 +45,21 @@
 <main>
 
     <%
+        Cookie[] cookies = request.getCookies();
+        String userEmail = null;
+
+        // Find the cookie that contains the user's email
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("em".equals(cookie.getName())) { // Change "userEmail" to the actual cookie name
+                    userEmail = cookie.getValue();
+                    System.out.println(userEmail);
+                    break;
+                }
+            }
+        }
+    %>
+    <%
         String id = request.getParameter("j_id");
 
     %>
@@ -53,10 +69,17 @@
     try
     {
         Connection con = MyDatabase.getConnection();
+        PreparedStatement psmt1 = con.prepareStatement("select * from seeker where email=?");
         PreparedStatement psmt = con.prepareStatement("select * from job_add inner join recuruiter on job_add.r_id = recuruiter.r_id where j_id =?");
         psmt.setString(1,id);
+        psmt1.setString(1,userEmail);
 
         ResultSet rs = psmt.executeQuery();
+        ResultSet rs1 = psmt1.executeQuery();
+        String Seeker_id = null;
+        if (rs1.next()) {
+            Seeker_id = rs1.getString("s_id");
+        }
         while (rs.next())
         {
             String CompanyName = rs.getString("Company_Name");
@@ -86,13 +109,7 @@
 
 %>
 
-    <%
-      HttpSession sessiondata = request.getSession();
-      sessiondata.setAttribute("jobname",jobTitle);
-      sessiondata.setAttribute("companyname",companyimg);
 
-
-    %>
     <!-- Hero Area Start-->
     <div class="slider-area ">
         <div class="single-slider section-pad-t30 slider-height2 d-flex align-items-md-center" style="background-image: url('./userstyle/assets/img/jobDetails/JobDetails.jpg'); height: 50%; width: 100%">
@@ -203,11 +220,51 @@
                             <li>Salary :  <span><%=MinSalary%>₹ - <%=MaxSalary%>₹</span></li>
 
                         </ul>
-                        <div class="apply-btn2">
-                            <a href=".?pname=jobApplyForm" class="btn">Apply Now</a>
-                        </div>
-                    </div>
-                    <div class="post-details4  mb-50">
+
+                        <!-- Button to Open the Modal -->
+                        <form action="JobApplyServlet" enctype="multipart/form-data" method="post">
+                            <div class="apply-btn2">
+                                <a class="btn" style="color: #FFFFFF" data-toggle="modal" data-target="#resumeModal">Apply Now</a>
+                            </div>
+
+                            <!-- The Modal -->
+                            <div class="modal fade" id="resumeModal" tabindex="-1" aria-labelledby="resumeModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="resumeModalLabel">Upload Your Resume</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+                                        <!-- Modal Body -->
+                                        <div class="modal-body">
+                                            <!-- Form Fields -->
+                                            <input type="hidden" name="re_id" value="<%= r_id %>">
+                                            <input type="hidden" name="jo_id" value="<%= j_id %>">
+                                            <input type="hidden" name="se_id" value="<%= Seeker_id %>">
+                                            <input type="hidden" name="status" value="pending">
+
+
+                                            <div class="form-group">
+                                                <label for="resumeUpload">Upload Resume</label>
+                                                <input type="file" name="resume" class="form-control-file" id="resumeUpload" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Modal Footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="post-details4  mb-50">
                         <!-- Small Section Tittle -->
                         <div class="small-section-tittle">
                             <h4>Company Information</h4>
@@ -238,6 +295,9 @@
 <!-- JS here -->
 
 <!-- All JS Custom Plugins Link Here here -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
 <!-- Jquery, Popper, Bootstrap -->
 <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>

@@ -108,15 +108,7 @@
 %>
 
 <%
-    HttpSession sessiondata = request.getSession(false); // Get session if exists, don't create a new one
-    String companyName = "";
-    String jobName = "";
-    if (sessiondata != null) {
-        jobName = (String) sessiondata.getAttribute("jobname");
-        companyName = (String) sessiondata.getAttribute("companyname");
-        System.out.println(jobName);
-        System.out.println(companyName);
-    }
+  // Get session if exists, don't create a new one
     Cookie[] cookies = request.getCookies();
     String userEmail = null;
 
@@ -138,8 +130,8 @@
         <fieldset>
             <legend>Personal data</legend>
             <div class="two-cols">
-                <input type="hidden" name="companyname" value="<%=companyName%>">
-                <input type="hidden" name="jobname" value="<%=jobName%>">
+                <input type="hidden" name="companyname" value="">
+                <input type="hidden" name="jobname" value="">
                 <input type="hidden" name ="Jobstatus" value="Padding">
                 <label>
                     First name *
