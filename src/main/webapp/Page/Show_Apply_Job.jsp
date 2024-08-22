@@ -15,6 +15,14 @@
 <html class="no-js" lang="zxx">
 
 <head>
+    <style>
+        .square {
+            padding: 10px;
+            height: 70px;
+            width: 70px;
+            background-color: #555;
+        }
+    </style>
     <!-- Add this line in the <head> section of your HTML -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -61,6 +69,7 @@
     <%
         Cookie[] cookies = request.getCookies();
         String userEmail = null;
+String seekerId="";
 
         // Find the cookie that contains the user's email
         if (cookies != null) {
@@ -73,32 +82,49 @@
             }
         }
     %>
+
     <%
-        int count=0;
 
-        int id = 3;
-        try
-        {
             Connection con = MyDatabase.getConnection();
-            PreparedStatement psmt = con.prepareStatement("SELECT * FROM job_apply where  email=?");
+            PreparedStatement psmt = con.prepareStatement("select * from seeker where email=?");
             psmt.setString(1,userEmail);
-            psmt.execute();
-            ResultSet rs = psmt.getResultSet();
 
+            ResultSet rs = psmt.executeQuery();
 
-                while (rs.next()) {
-
-                    String cname= rs.getString("Company_name");
-                    String jobname = rs.getString("JobName");
-                    String Applydate = rs.getString("Apply_Date");
-                    String jobStatus = rs.getString("JobStatus");
-
-
-
+            while (rs.next())
+            {
+                 seekerId  =  rs.getString("s_id");
+            }
 
 
 
     %>
+    <%
+
+        try
+        {
+
+            PreparedStatement psmt1 = con.prepareStatement("SELECT * FROM job_apply INNER JOIN recuruiter ON job_apply.r_id = recuruiter.r_id INNER JOIN seeker ON job_apply.s_id = seeker.s_id INNER JOIN  Job_add on job_apply.j_id = job_add.j_id  WHERE job_apply.s_id=?");
+
+            psmt1.setString(1,seekerId);
+
+            ResultSet rs1 = psmt1.executeQuery();
+
+
+                while (rs1.next()) {
+
+
+
+                    String Cname = rs1.getString("Company_Name");
+                    String Job_Title = rs1.getString("Job_Title");
+                    String JobStatus = rs1.getString("JobStatus");
+                    String jobDate = rs1.getString("JobApplyDate");
+                    byte[] cimg = rs1.getBytes("Cimg");
+                    String imgbyte = Base64.getEncoder().encodeToString(cimg);
+                    String cimges = "data:image/png;base64," + imgbyte;
+
+    %>
+
 
     <div class="container">
         <!-- Section Tittle -->
@@ -108,19 +134,35 @@
             <div class="col-xl-10" >
                 <!-- single-job-content -->
                 <div class="single-job-items mb-30" style="border-style: solid" >
+
                     <div class="job-items">
 
+                            <img src="<%=cimges%>" style="height: 70px;width: 70px;margin-right: 10px;border-style: solid" >
+
+
                         <div class="job-tittle">
-                            <a style="text-decoration: none" href="job_details.html"><h4><%=cname%></h4></a>
+                            <a style="text-decoration: none" href="job_details.html"><h4><%=Cname%></h4></a>
                             <ul style="padding-left: 0px">
-                                <li ><%=jobname%></li>
-                                <li><%=Applydate%></li>
+                                <li ><%=Job_Title%></li>
+                                <li><%=jobDate%></li>
 
                             </ul>
                         </div>
                     </div>
                     <div class="items-link f-right">
-                        <a style="text-decoration: none" href="job_details.html"><%=jobStatus%></a>
+                        <%
+                            if ("Panding".equals(JobStatus)) {
+                        %>
+                        <a style="text-decoration: none; background-color: crimson; color: #FFFFFF" href="job_details.html"><%= JobStatus %></a>
+                        <%
+                        } else if ("Approve".equals(JobStatus)) {
+                        %>
+                        <a style="text-decoration: none; background-color: greenyellow; color: black" href="job_details.html"><%= JobStatus %></a>
+                        <%
+                            }
+                        %>
+
+
                     </div>
                 </div>
                 <!-- single-job-content -->
@@ -130,13 +172,14 @@
         </div>
     </div>
     <%
-                }
 
+            }
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
+
     %>
 </section>
 </main>

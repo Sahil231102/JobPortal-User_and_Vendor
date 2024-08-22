@@ -24,12 +24,15 @@ public class UpdateUserProfileServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 try {
-    String id = req.getParameter("id");
+    String s_id = req.getParameter("s_id");
     String fname = req.getParameter("fname");
     String lname = req.getParameter("lname");
-    String email = req.getParameter("email");
     String phone = req.getParameter("phone");
-    String gender = req.getParameter("Gender");
+    String Gender = req.getParameter("Gender");
+    String UG = req.getParameter("UG");
+    String PG = req.getParameter("PG");
+    String CollegeName = req.getParameter("CollegeName");
+
 //    System.out.println(id);
 //    System.out.println(fname);
 //    System.out.println(lname);
@@ -42,7 +45,7 @@ try {
     InputStream inputStream = updateimg.getInputStream();
     byte[] UpdateImg = readByteFromInputstream(inputStream);
 
-    UpdateUserProfileModel UUPM = new UpdateUserProfileModel(id,fname,lname,email,phone,gender,UpdateImg);
+    UpdateUserProfileModel UUPM = new UpdateUserProfileModel(s_id,fname,lname,phone,UG,PG,CollegeName, Gender,UpdateImg);
     UpdateUserProfileDB uupDB = new UpdateUserProfileDB();
     boolean updateData = uupDB.UpdateUserProfileDB(UUPM);
 //System.out.println(updateData);

@@ -226,7 +226,7 @@
                                             </button>
                                         </div>
 
-                                            <input type="hidden" class="form-control" name="id" value="<%=id%>" readonly />
+                                            <input type="hidden" class="form-control" name="s_id" value="<%=id%>" readonly />
 
                                         <div class="modal-body">
                                             <label>First name</label>
@@ -237,8 +237,8 @@
                                             <input type="text" class="form-control" name="lname" value="<%=Lname%>" />
                                         </div>
                                         <div class="modal-body">
-                                            <label>Date Of Birth</label>
-                                            <input type="text" class="form-control" name="email" value="<%=Dob%>" />
+                                            <label>Gender</label>
+                                            <input type="tel" maxlength="10" class="form-control" name="Gender" value="<%=Gender%>" />
                                         </div>
                                         <div class="modal-body">
                                             <label>Phone Number</label>
@@ -254,7 +254,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <label>College Name</label>
-                                            <input type="text" class="form-control" name="Gender" value="<%=collegeName%>" />
+                                            <input type="text" class="form-control" name="CollegeName" value="<%=collegeName%>" />
                                         </div>
                                         <div class="modal-body">
                                             <label>Choose Images</label>

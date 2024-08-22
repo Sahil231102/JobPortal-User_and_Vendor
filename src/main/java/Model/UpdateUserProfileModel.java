@@ -2,25 +2,60 @@ package Model;
 
 public class UpdateUserProfileModel {
 
-    private String id;
+    private String s_id;
     private String firstName;
     private String lastName;
-    private String DOB;
-    private String email;
     private String phone;
     private String Gender;
+    private String Undergraduate;
+    private String Postgraduate;
+    private String Collegename;
     private byte[] newimg;
 
-    public UpdateUserProfileModel(String id,String firstName, String lastName, String email, String phone, String gender, byte[] newimg) {
+    public UpdateUserProfileModel(String s_id,String firstName, String lastName,  String phone,String undergraduate,String postgraduate,String collegename, String gender, byte[] newimg) {
 
-        this.id = id;
+        this.s_id = s_id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.Collegename = collegename;
+        this.Postgraduate = postgraduate;
+        this.Undergraduate = undergraduate;
         this.phone = phone;
         this.Gender = gender;
         this.newimg = newimg;
 
+    }
+
+    public String getS_id() {
+        return s_id;
+    }
+
+    public void setS_id(String s_id) {
+        this.s_id = s_id;
+    }
+
+    public String getUndergraduate() {
+        return Undergraduate;
+    }
+
+    public void setUndergraduate(String undergraduate) {
+        Undergraduate = undergraduate;
+    }
+
+    public String getPostgraduate() {
+        return Postgraduate;
+    }
+
+    public void setPostgraduate(String postgraduate) {
+        Postgraduate = postgraduate;
+    }
+
+    public String getCollegename() {
+        return Collegename;
+    }
+
+    public void setCollegename(String collegename) {
+        Collegename = collegename;
     }
 
     public String getFirstName() {
@@ -39,13 +74,6 @@ public class UpdateUserProfileModel {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getPhone() {
         return phone;
@@ -71,12 +99,6 @@ public class UpdateUserProfileModel {
         this.newimg = newimg;
     }
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 }
 

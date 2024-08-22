@@ -261,7 +261,7 @@
 
                     if (rs.next()) {
 
-                        String Jobname= rs.getString("Job_Name");
+                        String Jobname= rs.getString("Job_Title");
 
                         String Company_name= rs.getString("Company_Name");
                         String city = rs.getString("City");
