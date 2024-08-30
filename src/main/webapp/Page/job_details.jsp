@@ -245,7 +245,7 @@
                                             <input type="hidden" name="re_id" value="<%= r_id %>">
                                             <input type="hidden" name="jo_id" value="<%= j_id %>">
                                             <input type="hidden" name="se_id" value="<%= Seeker_id %>">
-                                            <input type="hidden" name="status" value="pending">
+                                            <input type="hidden" name="status" value="Pending">
 
 
                                             <div class="form-group">

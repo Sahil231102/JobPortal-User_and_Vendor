@@ -132,7 +132,7 @@
             <div class="two-cols">
                 <input type="hidden" name="companyname" value="">
                 <input type="hidden" name="jobname" value="">
-                <input type="hidden" name ="Jobstatus" value="Padding">
+                <input type="hidden" name ="Jobstatus" value="Pending">
                 <label>
                     First name *
                     <input type="text" name="fname" required>
