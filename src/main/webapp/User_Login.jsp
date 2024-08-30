@@ -39,23 +39,26 @@
 <body>
 <div class="wrapper" style="width: 500px">
     <div class="title-text">
-        <div class="title login">User Login</div>
+        <div class="title login">Seeker Login</div>
 
     </div>
 
         <div class="form-inner">
             <form action="./UserLoginServlet" method="post" enctype="multipart/form-data" class="login" id="userLoginForm">
-                <img style="align-items: center;display: flex;justify-content: center" src="userstyle/assets/img/Login/Login.svg" height="180px" width="180px">
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <img src="userstyle/assets/img/Login/Login.svg" height="180px" width="180px" alt="Login">
+                </div>
+
                 <div class="field">
-                    <input type="email" placeholder="User Email Address" id="userEmail" name="email" required>
+                    <input type="email" placeholder="Seeker Email Address" id="userEmail" name="email" required>
                 </div>
                 <div class="field">
                     <input type="password" placeholder="Password" id="userPassword" name="password" required>
                 </div>
-                <div class="pass-link"><a href="#">Forgot password?</a></div>
+<%--                <div class="pass-link"><a href="#">Forgot password?</a></div>--%>
                 <div class="field btn">
                     <div class="btn-layer"></div>
-                    <input type="submit" name ="user" value="user">
+                    <input type="submit" name ="user">
                 </div>
                 <div class="usersignup-link">Not a member? <a href="Page/User_SignUp.jsp">Signup now</a></div>
             </form>
