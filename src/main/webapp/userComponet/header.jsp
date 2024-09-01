@@ -76,7 +76,7 @@
                                     String userimges = "data:image/png;base64," + imgbyte;
                         %>
                         <a href=".?pname=userProfile">
-                            <img style="height: 50px; border-radius: 50px; align-items: end; border-style: solid; border-color: #4C5B5C" width="50px" src="<%= userimges %>" />
+                            <img style="height: 50px; border-radius: 50px; align-items: end; border-style: solid; border-color: #4C5B5C;object-fit: cover" width="50px" src="<%= userimges %>" />
                         </a>
                         <%
                                 }

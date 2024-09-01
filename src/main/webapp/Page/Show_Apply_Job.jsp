@@ -146,12 +146,13 @@ String seekerId="";
                                 <li ><%=Job_Title%></li>
                                 <li><%=jobDate%></li>
 
+
                             </ul>
                         </div>
                     </div>
                     <div class="items-link f-right">
                         <%
-                            if ("Panding".equals(JobStatus)) {
+                            if ("Pending".equals(JobStatus)) {
                         %>
                         <a style="text-decoration: none; background-color: crimson; color: #FFFFFF" href="job_details.html"><%= JobStatus %></a>
                         <%
