@@ -162,6 +162,88 @@
     <jsp:include page="./userComponet/footer.jsp"/>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+        });
+
+        // Check for URL parameter indicating success (e.g., ?success=true)
+        const urlParams = new URLSearchParams(window.location.search);
+        const successParam = urlParams.get('s');
+
+        if (successParam && successParam === 'login') {
+            // Display success toast
+            Toast.fire({
+                icon: 'success',
+                title: 'Login successfully!'
+            });
+            urlParams.delete('s');
+            const newUrl = `./?pname=Home`;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+        else if (successParam && successParam === 'ApplySuccessfully') {
+            // Display success toast
+            Toast.fire({
+                icon: 'success',
+                title: 'Job Apply successfully!'
+            });
+            urlParams.delete('s');
+            const newUrl = `./?pname=AJ`;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+        else if (successParam && successParam === 'NOTAddJOB') {
+            // Display success toast
+            Toast.fire({
+                icon: 'error',
+                title: 'Not Add successfully!'
+            });
+            urlParams.delete('s');
+            const newUrl = `./?pname=AJ`;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+        else if (successParam && successParam === 'seekerProfile') {
+            // Display success toast
+            Toast.fire({
+                icon: 'success',
+                title: 'Profile Update successfully!'
+            });
+            urlParams.delete('s');
+            const newUrl = `./?pname=userProfile`;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+        else if (successParam && successParam === 'RecruiterProfile') {
+            // Display success toast
+            Toast.fire({
+                icon: 'success',
+                title: 'Profile Update successfully!'
+            });
+            urlParams.delete('s');
+            const newUrl = `./?pname=userProfile`;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+        else if (successParam && successParam === 'NotRecruiterProfile') {
+            // Display success toast
+            Toast.fire({
+                icon: 'success',
+                title: 'Not Profile Update successfully!'
+            });
+            urlParams.delete('s');
+            const newUrl = `./?pname=userProfile`;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+    });
+</script>
+
 
 
 <!-- JS here -->

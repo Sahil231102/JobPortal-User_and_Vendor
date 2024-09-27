@@ -52,7 +52,7 @@ public class UserSignupServlet extends HttpServlet {
             System.out.println(userSignUp);
             if (userSignUp) {
 
-               resp.sendRedirect("User_Login.jsp");
+               resp.sendRedirect("User_Login.jsp?s=singUp");
             } else {
              req.getRequestDispatcher(req.getContextPath()+"Page/User_SignUp.jsp").include(req,resp);
             }

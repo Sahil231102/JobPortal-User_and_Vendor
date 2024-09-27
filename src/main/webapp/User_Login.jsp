@@ -67,6 +67,39 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+        });
+
+        // Check for URL parameter indicating success (e.g., ?success=true)
+        const urlParams = new URLSearchParams(window.location.search);
+        const successParam = urlParams.get('s');
+
+        if (successParam && successParam === 'signUp') {
+            // Display success toast
+            Toast.fire({
+                icon: 'success',
+                title: 'SignUp successfully!'
+            });
+            urlParams.delete('s');
+            const newUrl = `./User_Login.jsp`;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+
+    });
+</script>
 
 <script>
     const loginText = document.querySelector(".title-text .login");
@@ -106,6 +139,7 @@
         title: "Signed in successfully"
     });
 </script>
+
 <script>
     document.getElementById('loginBtn').addEventListener('click', function() {
         const userEmail = document.getElementById('userEmail').value;
@@ -127,7 +161,6 @@
     });
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     document.getElementById('loginForm').addEventListener('submit', function (event) {
         event.preventDefault(); // Prevent default form submission
@@ -180,5 +213,7 @@
             });
     });
 </script>
+
 </body>
+
 </html>

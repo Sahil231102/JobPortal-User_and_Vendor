@@ -52,12 +52,12 @@ try {
     if(updateData)
     {
         System.out.println();
-        resp.sendRedirect(".?pname=userProfile");
+        resp.sendRedirect(".?pname=userProfile&s=seekerProfile");
     }
     else
     {
         System.out.println("Error");
-        resp.sendRedirect(".?pname=userProfile");
+        resp.sendRedirect(".?pname=userProfile&s=NotseekerProfile");
     }
 }
 catch (Exception e)

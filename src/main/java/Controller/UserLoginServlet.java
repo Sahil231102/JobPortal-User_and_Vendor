@@ -37,7 +37,7 @@ public class UserLoginServlet extends HttpServlet {
                 resp.addCookie(c);
 
 
-                resp.sendRedirect(req.getContextPath() + "/index.jsp");
+                resp.sendRedirect(req.getContextPath() + "/index.jsp?s=login");
 //                RequestDispatcher rq=req.getRequestDispatcher(req.getContextPath())+".?");
 //                rq.forward(req,resp);
             }

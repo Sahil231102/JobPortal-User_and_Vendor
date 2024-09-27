@@ -47,7 +47,7 @@ public class JobApplyServlet extends HttpServlet {
                 System.out.println(r_id);
                 System.out.println(s_id);
                 System.out.println(j_id);
-                resp.sendRedirect(".?pname=jobApplyData");
+                resp.sendRedirect(".?pname=jobApplyData&s=ApplySuccessfully");
             } else {
                 RequestDispatcher rd = req.getRequestDispatcher("jobApplyForm.jsp");
                 req.setAttribute("errorMessage", "Failed to apply for the job. Please try again.");
