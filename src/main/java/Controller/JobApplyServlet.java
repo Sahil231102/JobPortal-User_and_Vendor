@@ -14,9 +14,6 @@ import javax.servlet.http.Part;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @WebServlet(name = "JobApplyServlet", value = "/JobApplyServlet")
 @MultipartConfig(
@@ -30,35 +27,50 @@ public class JobApplyServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            // Retrieve parameters
-          String s_id = req.getParameter("se_id");
-          String j_id = req.getParameter("jo_id");
-          String r_id = req.getParameter("re_id");
-          String status = req.getParameter("status");
+            // Retrieve form parameters
+            String s_id = req.getParameter("se_id");
+            String j_id = req.getParameter("jo_id");
+            String r_id = req.getParameter("re_id");
+            String status = req.getParameter("status");
             Part resumePart = req.getPart("resume");
             byte[] resumeBytes = readBytesFromInputStream(resumePart.getInputStream());
 
-            JobApplyModel jModel = new JobApplyModel(s_id,r_id,j_id,status,resumeBytes);
+            // Create JobApplyModel object
+            JobApplyModel jModel = new JobApplyModel(s_id, r_id, j_id, status, resumeBytes);
             JobApplyDB jDB = new JobApplyDB();
-            boolean isJobApplied = jDB.JobApplyDB(jModel);
 
+            // Check if the user has already applied for this job
+            boolean hasAlreadyApplied = jDB.checkIfAlreadyApplied(s_id, j_id);
 
-            if (isJobApplied) {
-                System.out.println(r_id);
-                System.out.println(s_id);
-                System.out.println(j_id);
-                resp.sendRedirect(".?pname=jobApplyData&s=ApplySuccessfully");
+            if (hasAlreadyApplied) {
+                // If user already applied, send error message
+
+                resp.sendRedirect(req.getContextPath() + ".?pname=Home&s=AlreadyApply");
+
             } else {
-                RequestDispatcher rd = req.getRequestDispatcher("jobApplyForm.jsp");
-                req.setAttribute("errorMessage", "Failed to apply for the job. Please try again.");
-                rd.forward(req, resp);
-            }
-        } catch (Exception e) {
+                // If user hasn't applied yet, proceed with application
+                boolean isJobApplied = jDB.JobApplyDB(jModel);
 
-          e.printStackTrace();
+                if (isJobApplied) {
+                    // Redirect on successful job application
+                    resp.sendRedirect(".?pname=jobApplyData&s=ApplySuccessfully");
+                } else {
+                    // Forward to form with error message on failure
+                    req.setAttribute("errorMessage", "Failed to apply for the job. Please try again.");
+                    RequestDispatcher rd = req.getRequestDispatcher("jobApplyForm.jsp");
+                    rd.forward(req, resp);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            req.setAttribute("errorMessage", "An error occurred while processing your application.");
+            RequestDispatcher rd = req.getRequestDispatcher("jobApplyForm.jsp");
+            rd.forward(req, resp);
         }
     }
 
+    // Helper method to read bytes from the resume input stream
     private byte[] readBytesFromInputStream(InputStream inputStream) throws IOException {
         try (ByteArrayOutputStream buffer = new ByteArrayOutputStream()) {
             int bytesRead;

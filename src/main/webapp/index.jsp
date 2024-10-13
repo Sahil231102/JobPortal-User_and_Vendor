@@ -241,6 +241,16 @@
             const newUrl = `./?pname=userProfile`;
             window.history.replaceState({}, document.title, newUrl);
         }
+        else if (successParam && successParam === 'AlreadyApply') {
+            // Display success toast
+            Toast.fire({
+                icon: 'error',
+                title: 'Job Already Apply!'
+            });
+            urlParams.delete('s');
+            const newUrl = `./?pname=Home`;
+            window.history.replaceState({}, document.title, newUrl);
+        }
     });
 </script>
 
