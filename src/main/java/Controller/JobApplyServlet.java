@@ -45,7 +45,7 @@ public class JobApplyServlet extends HttpServlet {
             if (hasAlreadyApplied) {
                 // If user already applied, send error message
 
-                resp.sendRedirect(req.getContextPath() + ".?pname=Home&s=AlreadyApply");
+                resp.sendRedirect( ".?pname=Home&s=AlreadyApply");
 
             } else {
                 // If user hasn't applied yet, proceed with application
