@@ -1,4 +1,7 @@
-<%--
+<%@ page import="java.sql.Connection" %>
+<%@ page import="DAO.MyDatabase" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.
   User: DELL
   Date: 30-05-2024
@@ -24,6 +27,39 @@
 </head>
 
 <body>
+<%
+    Cookie[] cookies = request.getCookies();
+    String userEmail = null;
+
+    // Find the cookie that contains the user's email
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if ("em".equals(cookie.getName())) { // Change "userEmail" to the actual cookie name
+                userEmail = cookie.getValue();
+                System.out.println(userEmail);
+                break;
+            }
+        }
+    }
+    try
+    {
+
+        Connection con = MyDatabase.getConnection();
+        PreparedStatement psmt = con.prepareStatement("select * from seeker where email=?");
+        psmt.setString(1,userEmail);
+        ResultSet rs = psmt.executeQuery();
+
+        if(rs.next()) {
+            String sid = rs.getString("s_id");
+
+
+
+
+
+%>
+
+
+
 <!-- Preloader Start -->
 <%--<div id="preloader-active">--%>
 <%--    <div class="preloader d-flex align-items-center justify-content-center">--%>
@@ -74,39 +110,39 @@
                         <span>CONTACT</span>
                         <span>US</span>
                     </div>
-                    <div class="app-contact">CONTACT INFO : +62 81 314 928 595</div>
-                </div>
-                <div class="screen-body-item">
-                    <div class="app-form">
-                        <div class="app-form-group">
-                            <input class="app-form-control" placeholder="FIRST NAME" >
-                        </div>
-                        <div class="app-form-group">
-                            <input class="app-form-control" placeholder="LAST NAME" >
-                        </div>
-                        <div class="app-form-group">
-                            <input class="app-form-control" placeholder="EMAIL">
-                        </div>
-                        <div class="app-form-group">
-                            <input type="number" class="app-form-control" placeholder="CONTACT NO">
-                        </div>
-                        <div class="app-form-group message">
-                            <input class="app-form-control" placeholder="MESSAGE">
 
-                        </div>
-                        <div class="app-form-group buttons">
-                            <button class="app-form-button">CANCEL</button>
-                            <button class="app-form-button">SEND</button>
+                </div>
+                <form action="./ContactusServlet" method="post" enctype="multipart/form-data">
+                    <div class="screen-body-item">
+                        <div class="app-form">
+
+                            <div class="app-form-group message">
+                                <input name="message" class="app-form-control" placeholder="MESSAGE">
+                                <input type="hidden" name="s_id" value="<%=sid%>">
+
+                            </div>
+                            <div class="app-form-group buttons">
+                                <button class="app-form-button">CANCEL</button>
+                                <button class="app-form-button">SEND</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
 
     </div>
 </div>
 
+<%
+    }
+    }
+    catch (Exception e)
+    {
+        e.printStackTrace();
+    }
 
+%>
 
 </body>
 

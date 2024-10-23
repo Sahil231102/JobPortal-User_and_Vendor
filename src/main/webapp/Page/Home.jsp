@@ -109,26 +109,11 @@
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="single-services text-center mb-30">
                         <div class="services-ion">
-                            <span class="flaticon-tour"></span>
+                            <span class="flaticon-high-tech"></span>
                         </div>
                         <div class="services-cap">
-                            <%
-                                Cookie[] cookies = request.getCookies();
-                                String userEmail = null;
-                                String checkadmin = null;
-                                // Find the cookie that contains the user's email
-                                if (cookies != null) {
-                                    for (Cookie cookie : cookies) {
-                                        if ("em".equals(cookie.getName())) { // Change "userEmail" to the actual cookie name
-                                            userEmail = cookie.getValue();
-                                            System.out.println(userEmail);
-                                            break;
-                                        }
-                                    }
-                                }
-                            %>
-                            <h5><a href="job_listing.html">Design & Creative</a></h5>
-                            <span>(653)</span>
+                            <h5><a href="job_listing.html">Technology and IT</a></h5>
+
                         </div>
                     </div>
                 </div>
@@ -138,8 +123,8 @@
                             <span class="flaticon-cms"></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Design & Development</a></h5>
-                            <span>(658)</span>
+                            <h5><a href="job_listing.html">Engineering</a></h5>
+
                         </div>
                     </div>
                 </div>
@@ -149,8 +134,19 @@
                             <span class="flaticon-report"></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Sales & Marketing</a></h5>
-                            <span>(658)</span>
+                            <h5><a href="job_listing.html">Business and Finance</a></h5>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                    <div class="single-services text-center mb-30">
+                        <div class="services-ion">
+                            <span class="flaticon-curriculum-vitae"></span>
+                        </div>
+                        <div class="services-cap">
+                            <h5><a href="job_listing.html">Healthcare and Medicine</a></h5>
+
                         </div>
                     </div>
                 </div>
@@ -160,30 +156,19 @@
                             <span class="flaticon-app"></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Mobile Application</a></h5>
-                            <span>(658)</span>
+                            <h5><a href="job_listing.html">Education</a></h5>
+
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="single-services text-center mb-30">
                         <div class="services-ion">
-                            <span class="flaticon-helmet"></span>
+                            <span class="flaticon-tour"></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Construction</a></h5>
-                            <span>(658)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-services text-center mb-30">
-                        <div class="services-ion">
-                            <span class="flaticon-high-tech"></span>
-                        </div>
-                        <div class="services-cap">
-                            <h5><a href="job_listing.html">Information Technology</a></h5>
-                            <span>(658)</span>
+                            <h5><a href="job_listing.html">Marketing and Advertising</a></h5>
+
                         </div>
                     </div>
                 </div>
@@ -193,22 +178,12 @@
                             <span class="flaticon-real-estate"></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Real Estate</a></h5>
-                            <span>(658)</span>
+                            <h5><a href="job_listing.html">Sales and Retail</a></h5>
+
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-services text-center mb-30">
-                        <div class="services-ion">
-                            <span class="flaticon-content"></span>
-                        </div>
-                        <div class="services-cap">
-                            <h5><a href="job_listing.html">Content Writer</a></h5>
-                            <span>(658)</span>
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <!-- More Btn -->
             <!-- Section Button -->
@@ -239,93 +214,94 @@
 <%--    <!-- Online CV Area End-->--%>
     <!-- Featured_job_start -->
 
-    <section class="featured-job-area feature-padding">
-        <div class="row h3">
-            <div class="col-lg-12">
-                <div class="section-tittle text-center">
-                    <span>Recent Job</span>
-                    <h2>Featured Jobs</h2>
-                </div>
-            </div>
-        </div>
-        <%
-            int id = 3;
-            try
-            {
-                Connection con = MyDatabase.getConnection();
-                PreparedStatement  psmt = con.prepareStatement("select * from job_add ");
-                psmt.execute();
-                ResultSet rs = psmt.getResultSet();
-                for(int i=1; i<=5;i++)
-                {
+<%--    <section class="featured-job-area feature-padding">--%>
+<%--        <div class="row h3">--%>
+<%--            <div class="col-lg-12">--%>
+<%--                <div class="section-tittle text-center">--%>
+<%--                    <span>Recent Job</span>--%>
+<%--                    <h2>Featured Jobs</h2>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <%--%>
 
-                    if (rs.next()) {
+<%--            try--%>
+<%--            {--%>
+<%--                Connection con = MyDatabase.getConnection();--%>
+<%--                PreparedStatement  psmt = con.prepareStatement("SELECT * FROM job_add inner join recuruiter on job_add.r_id= recuruiter.r_id");--%>
+<%--                psmt.execute();--%>
+<%--                ResultSet rs = psmt.getResultSet();--%>
+<%--                for(int i=1; i<=5;i++)--%>
+<%--                {--%>
 
-                        String Jobname= rs.getString("Job_Title");
+<%--                    if (rs.next()) {--%>
 
-                        String Company_name= rs.getString("Company_Name");
-                        String city = rs.getString("City");
-                        String state= rs.getString("State");
-                        String email = rs.getString("Email");
-                        String phone = rs.getString("Phone_Number");
-                        String salary = rs.getString("Salary");
-                        String jobtype = rs.getString("JobType");
-                        String startdate = rs.getString("StartDate");
-                        String enddate = rs.getString("EndDate");
-                        String jobDescription = rs.getString("JobDescription");
-                        String vacancy = rs.getString("vacancy");
+<%--                        String Jobname= rs.getString("Job_Title");--%>
 
-                        byte[] Cimg = rs.getBytes("companyImg");
-                        String imgbyte = Base64.getEncoder().encodeToString(Cimg);
-                        String companyImg = "data:image/png;base64,"+imgbyte;
+<%--                        String Company_name= rs.getString("Company_Name");--%>
+<%--                        String city = rs.getString("City");--%>
+<%--                        String state= rs.getString("State");--%>
+<%--//                        String email = rs.getString("Email");--%>
+<%--//                        String phone = rs.getString("Phone_Number");--%>
+<%--                        String Minsalary = rs.getString("Minsalary");--%>
+<%--                        String Maxsalary = rs.getString("Maxsalary");--%>
+<%--//                        String jobtype = rs.getString("JobType");--%>
+<%--//                        String startdate = rs.getString("StartDate");--%>
+<%--//                        String enddate = rs.getString("EndDate");--%>
+<%--//                        String jobDescription = rs.getString("JobDescription");--%>
+<%--//                        String vacancy = rs.getString("vacancy");--%>
 
-
-
-
-        %>
-
-        <div class="container">
-            <!-- Section Tittle -->
+<%--                        byte[] Cimg = rs.getBytes("Cimg");--%>
+<%--                        String imgbyte = Base64.getEncoder().encodeToString(Cimg);--%>
+<%--                        String companyImg = "data:image/png;base64,"+imgbyte;--%>
 
 
-            <div class="row justify-content-center">
-                <div class="col-xl-10">
-                    <!-- single-job-content -->
-                    <div class="single-job-items mb-30">
-                        <div class="job-items">
-                            <div class="company-img">
-                                <a href=".?pname=jobDetails" style="padding-right: 20px "><img height="100px" width="100px" style="border-color: #4C5B5C;border-style: solid;" src="<%=companyImg%>" alt=""></a>
-                            </div>
-                            <div class="job-tittle">
-                                <a href="job_details.html"><h4><%=Company_name%></h4></a>
-                                <ul>
-                                    <li><%=Jobname%></li>
-                                    <li><i class="fas fa-map-marker-alt"></i><%=city%>,<%=state%></li>
 
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="items-link f-right">
-                            <a href="job_details.html">Full Time</a>
-                            <li><%=salary%>₹</li>
-                        </div>
-                    </div>
-                    <!-- single-job-content -->
-                                     <!-- single-job-content -->
 
-                </div>
-            </div>
-        </div>
-        <%
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-        %>
-    </section>
+<%--        %>--%>
+
+<%--        <div class="container">--%>
+<%--            <!-- Section Tittle -->--%>
+
+
+<%--            <div class="row justify-content-center">--%>
+<%--                <div class="col-xl-10">--%>
+<%--                    <!-- single-job-content -->--%>
+<%--                    <div class="single-job-items mb-30">--%>
+<%--                        <div class="job-items">--%>
+<%--                            <div class="company-img">--%>
+<%--                                <a href=".?pname=jobDetails" style="padding-right: 20px "><img height="100px" width="100px" style="color: #c82333;border-color: #4C5B5C;border-style: solid;" src="" alt=""><%=companyImg%></a>--%>
+<%--                            </div>--%>
+<%--                            <div class="job-tittle">--%>
+<%--                                <a href="job_details.html"><h4><%=Company_name%></h4></a>--%>
+<%--                                <ul>--%>
+<%--                                    <li><%=city%>,<%=state%></li>--%>
+<%--                                    <li><i class="fas fa-map-marker-alt"></i></li>--%>
+
+<%--                                </ul>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="items-link f-right">--%>
+<%--                            <a href="job_details.html">Full Time</a>--%>
+<%--                            <li>₹<%=Maxsalary%>-₹<%=Maxsalary%></li>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <!-- single-job-content -->--%>
+<%--                                     <!-- single-job-content -->--%>
+
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <%--%>
+<%--                    }--%>
+<%--                }--%>
+<%--            }--%>
+<%--            catch (Exception e)--%>
+<%--            {--%>
+<%--                e.printStackTrace();--%>
+<%--            }--%>
+<%--        %>--%>
+<%--    </section>--%>
     <!-- Featured_job_end -->
     <!-- How  Apply Process Start-->
     <div class="apply-process-area apply-bg " data-background="./userstyle/assets/img/gallery/how-applybg.png">

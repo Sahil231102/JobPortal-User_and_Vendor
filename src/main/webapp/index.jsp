@@ -251,6 +251,27 @@
             const newUrl = `./?pname=Home`;
             window.history.replaceState({}, document.title, newUrl);
         }
+        else if (successParam && successParam === 'NotRecruiterProfile') {
+            // Display success toast
+            Toast.fire({
+                icon: 'success',
+                title: 'Message send SuccessFully!!'
+            });
+            urlParams.delete('s');
+            const newUrl = `./?pname=Home`;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+        else if (successParam && successParam === 'contactF') {
+            // Display success toast
+            Toast.fire({
+                icon: 'error',
+                title: 'Message Not send SuccessFully!'
+            });
+            urlParams.delete('s');
+            const newUrl = `./?pname=Home`;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+
     });
 </script>
 
