@@ -112,7 +112,7 @@
                     </div>
 
                 </div>
-                <form action="./ContactusServlet" method="post" enctype="multipart/form-data">
+                <form action="./ContactusServlet" method="post">
                     <div class="screen-body-item">
                         <div class="app-form">
 

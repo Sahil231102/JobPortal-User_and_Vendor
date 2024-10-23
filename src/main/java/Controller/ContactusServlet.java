@@ -3,6 +3,7 @@ package Controller;
 import DAO.ContactusDB;
 import Model.ContactusModel;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -17,19 +18,21 @@ public class ContactusServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
 
         String Message = req.getParameter("message");
         String S_id = req.getParameter("s_id");
 
         ContactusModel cModel = new ContactusModel(Message,S_id);
         ContactusDB cDB =new ContactusDB();
-        boolean insert =
-    cDB.ContactusDB(cModel);
+        boolean insert = cDB.ContactusDB(cModel);
 
         if(insert)
         {
-            resp.sendRedirect(req.getContextPath()+".?pname=Home&s=contactSucess");
+
+//            RequestDispatcher rd = req.getRequestDispatcher(".?pname=Home&s=contactSuccess");
+//            rd.forward(req,resp);
+            resp.sendRedirect(".?pname=Home&s=contactSuccess");
+
         }
         else
         {

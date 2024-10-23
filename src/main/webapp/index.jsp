@@ -251,7 +251,7 @@
             const newUrl = `./?pname=Home`;
             window.history.replaceState({}, document.title, newUrl);
         }
-        else if (successParam && successParam === 'NotRecruiterProfile') {
+        else if (successParam && successParam === 'contactSuccess') {
             // Display success toast
             Toast.fire({
                 icon: 'success',
